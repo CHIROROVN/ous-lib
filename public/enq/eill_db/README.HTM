@@ -1,0 +1,429 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>データベースCGI</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#0080C0">
+
+<h2>高機能検索専用データベース SJIS版</h2>
+
+<hr>
+
+<p><strong>◆特徴</strong></p>
+
+<blockquote>
+    <p><strong>このＣＧＩを扱うには、ＨＴＭＬ(特にFORM)の知識が最低条件です。</strong></p>
+    <p>CSVファイルがあれば、ホームページでデータベースとして公開することができます。</p>
+    <p>検索フォームを自由に作成することができ、検索結果の表示HTMLも編集することが出来ます。</p>
+    <p>本格的な検索専用データベースをホームページ上で公開したい場合に最適です。</p>
+    <p>一般的なCSVファイルに対応しています。<br>
+    エクセルや三四郎等の表計算ソフトで作成したデータを<br>
+    CSV形式で保存すれば、このCGIで使用できます。<br>
+    ＣＳＶはセルの区切りにコンマを使用しているものに限ります。</p>
+    <p>またタブ区切りファイルにも対応しています。<br>
+    タブ区切りファイルの方が検索スピードは若干速いかも知れません。</p>
+    <p>Ver 1.40 から
+    データ登録数と該当件数を表示するようにしました。<br>
+    ただし、表示件数を多く表示するように設定した場合、若干検索スピードが下がるかもしれません。<br>
+    また検索対象データが何万とある物ですとかなり遅くなります。この場合はＳＱＬなどの本物のデータベースシステムを利用してください。＜もちろんこのＣＧＩだけでも可能ですが・・・。</p>
+    <p>検索対象ファイルはSJISのみと成りました。(euc版も作成可能)</p>
+    <p>掲示板ＣＧＩなどのデータファイルをデータベースとして検索させるようにすると、過去ログの検索が簡単になったりします。(掲示板ＣＧＩにもよるが)</p>
+</blockquote>
+
+<p><strong>◆設置方法</strong></p>
+
+<blockquote>
+    <table border="1">
+        <tr>
+            <td align="center" colspan="4"><font color="#FF0000">サーバー設置例</font></td>
+        </tr>
+        <tr>
+            <td align="center">ファイル名</td>
+            <td align="center">パーミッション</td>
+            <td>転送モード</td>
+            <td align="center">解説</td>
+        </tr>
+        <tr>
+            <td><strong>database.cgi</strong></td>
+            <td><strong>755</strong></td>
+            <td>アスキー</td>
+            <td>CGIプログラム</td>
+        </tr>
+        <tr>
+            <td><strong>data.csv</strong></td>
+            <td>　</td>
+            <td>アスキー</td>
+            <td>CSVデータファイル</td>
+        </tr>
+        <tr>
+            <td><strong>jcode.pl</strong></td>
+            <td>　</td>
+            <td>アスキー</td>
+            <td>日本語変換プログラム</td>
+        </tr>
+    </table>
+</blockquote>
+
+<blockquote>
+    <p>◆ＣＧＩプログラムをテキストエディタで開き１行目をサーバーの設定に直してください。</p>
+    <p>◆ＣＧＩプログラムの設定項目を必要に応じて変更してください。</p>
+    <p>◆サーバー設置例を参考に各ファイルをＦＴＰソフトでサーバーに設置してください。</p>
+    <p>◆ＣＧＩにブラウザからアクセスして動けば設置完了です。</p>
+</blockquote>
+
+<p>◆仕様書 <font size="2">Ver1.00
+の仕様とは異なりますのでご注意下さい。</font></p>
+
+<blockquote> 
+  <form method="post">
+    <p>検索するためのフォーム(input,select,textarea等)のname属性に型を指定する事で様々な検索機能を使う事が出来ます。</p>
+    <p>最初にFORM要素のaction属性に<strong>database.cgiのURL</strong>、method属性に<strong>POST</strong>を指定します。<br>
+      このFORM要素の中にINPUT要素やSELECT要素等を使って検索フォームを作り上げます。</p>
+    <p><font size="4"><strong><font color="#006600">行全体に有効な検索型</font></strong></font></p>
+    <p><font size="4"><strong>AND [key]</strong></font><font
+        size="3">　文字列検索型</font></p>
+    <blockquote> 
+      <p>行全体を検索対象にする場合は、フォームのname属性を「key」にしてください。<br>
+        <input type="text" size="20" name="key">
+        (AND検索)<br>
+        <font size="2">タグ：&lt;INPUT TYPE=&quot;text&quot; NAME=&quot;</font><font color="#FF0000" size="2">key</font><font
+            size="2">&quot; SIZE=&quot;20&quot;&gt;<br>
+        行全体検索が対象</font></p>
+      <p><font size="2">key の他に AND や and でも同じ働きをします。</font></p>
+    </blockquote>
+    <p><font size="4"><strong>OR [or]</strong></font><font
+        size="3">　文字列検索型</font></p>
+    <blockquote> 
+      <p>行全体をOR検索対象にする場合は、フォームのname属性を「or」にしてください。</p>
+      <p><font size="2">or の他に OR でも同じ働きをします。</font></p>
+    </blockquote>
+    <p><font size="4"><strong>NOT[not]</strong></font><font
+        size="3">　文字列検索型</font></p>
+    <blockquote> 
+      <p>行全体をNOT検索対象にする場合は、フォームのname属性を「not」にしてください。</p>
+      <p><font size="2">not の他に NOT でも同じ働きをします。</font></p>
+    </blockquote>
+    <p><font size="4"><strong><font color="#006633">列に有効な検索型</font></strong></font></p>
+    <p><font size="4"><strong>AND　[keys*]</strong></font><font
+        size="3">　文字列検索型</font></p>
+    <blockquote> 
+      <p>ある列を対象にAND検索を行います。フォームのname属性を[keys*]として、*に対象列番号を記入します。</p>
+    </blockquote>
+    <blockquote> 
+      <p>
+        <input type="text" size="20" name="keys2">
+        CGI名で検索(AND検索)<br>
+        <font size="2">タグ：&lt;INPUT TYPE=&quot;text&quot; NAME=&quot;</font><font color="#FF0000" size="2">keys2</font><font
+            size="2">&quot; SIZE=&quot;20&quot;&gt;<br>
+        2列目を検索対象にした場合</font></p>
+    </blockquote>
+    <p><font size="4"><strong>OR　[or*]</strong></font>　文字列検索型</p>
+    <blockquote> 
+      <p>ある列を対象に　OR　検索を行います。フォームのname属性を[or*]として、*に対象列番号を記入します。</p>
+    </blockquote>
+    <p><font size="4"><strong>NOT　[not*]</strong></font>　文字列検索型</p>
+    <blockquote> 
+      <p>ある列を対象に　NOT　検索を行います。フォームのname属性を[not*]として、*に対象列番号を記入します。</p>
+    </blockquote>
+    <p><font size="4"><b><font color="#006600">列の結合検索</font></b></font></p>
+    <p><font size="4"><strong>AND　OR　NOT　対応</strong></font></p>
+    <blockquote>
+      <p>複数の列を１つとみなして検索します。</p>
+      <p>name=&quot;keys1,2,3&quot;<br>
+        name=&quot;not1,2,3&quot; <br>
+        name=&quot;or1,2,3&quot; </p>
+      </blockquote>
+        <p><font size="4"><strong>一致 [equal*]</strong></font><font
+        size="3">　文字列検索型</font></p>
+    <blockquote> 
+      <p>ある列との一致を確かめる場合はフォームのname属性を[equal*]とし、*に列番号を記入します。</p>
+    </blockquote>
+    <blockquote> 
+      <p>
+        <select name="1" size="1">
+          <option selected>掲示板</option>
+          <option>アンケート</option>
+        </select>
+        <br>
+        <font size="2">&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">equal1</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option&gt;掲示板&lt;/option&gt;&lt;option&gt;アンケート&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        1列目と一致するか比較する場合</font></p>
+    </blockquote>
+    <p><font size="4"><strong>以上 [up*]</strong></font><font
+        size="3">　数値検索型</font></p>
+    <blockquote> 
+      <p>ある列の数値が指定した数値以上かを比較する場合に使います。フォームのname属性を[up*]として、*に列番号を記入します。</p>
+    </blockquote>
+    <blockquote> 
+      <p>
+        <select name="up3" size="1">
+          <option value="1000">\1,000</option>
+          <option value="2000">\2,000</option>
+          <option value="3000">\3,000</option>
+          <option value="4000">\4,000</option>
+          <option value="5000">\5,000</option>
+        </select>
+        以上<br>
+        <font size="2">&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">up3</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option value=&quot;1000&quot;&gt;\1,000&lt;/option&gt;<br>
+        &lt;option value=&quot;2000&quot;&gt;\2,000&lt;/option&gt;<br>
+        &lt;option value=&quot;3000&quot;&gt;\3,000&lt;/option&gt;<br>
+        &lt;option value=&quot;4000&quot;&gt;\4,000&lt;/option&gt;<br>
+        &lt;option value=&quot;5000&quot;&gt;\5,000&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        ３列目の数値が指定した数値以上か比較する場合</font></p>
+    </blockquote>
+    <p><font size="4"><strong>以下 　[down*]</strong></font><font
+        size="3">　数値検索型</font></p>
+    <blockquote> 
+      <p>ある列の数値が指定した数値以下かを比較する場合に使います。フォームのname属性を[down*]として、*に列番号を記入します。</p>
+    </blockquote>
+    <blockquote> 
+      <p>
+        <select name="down3" size="1">
+          <option value="1000">\1,000</option>
+          <option value="2000">\2,000</option>
+          <option value="3000">\3,000</option>
+          <option value="4000">\4,000</option>
+          <option value="5000">\5,000</option>
+        </select>
+        以下<br>
+        <font size="2">&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">down3</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option value=&quot;1000&quot;&gt;\1,000&lt;/option&gt;<br>
+        &lt;option value=&quot;2000&quot;&gt;\2,000&lt;/option&gt;<br>
+        &lt;option value=&quot;3000&quot;&gt;\3,000&lt;/option&gt;<br>
+        &lt;option value=&quot;4000&quot;&gt;\4,000&lt;/option&gt;<br>
+        &lt;option value=&quot;5000&quot;&gt;\5,000&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        ３列目の数値が指定した数値以下か比較する場合</font></p>
+    </blockquote>
+    <p><font size="4" color="#006600"><b>その他検索フォームの作成をサポートする機能</b></font></p>
+    <p><font size="4"><strong>結合 [join###]</strong></font><font
+        size="3">　補助型</font></p>
+    <blockquote> 
+      <p>複数のフォームの内容を結合したい場合に使います。連結したい複数あるフォームのname属性の先頭に[join]を追加します。</p>
+    </blockquote>
+    <p>個人コード
+      <select name="join1" size="1">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+      </select>
+      <select name="join1" size="1">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+      </select>
+      <select name="join1" size="1">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+      </select>
+      <select name="join1" size="1">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+      </select>
+    </p>
+    <p><font size="2">個人コード&lt;select name=&quot;</font><font
+        color="#FF0000" size="2">joinkeys1</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+      &lt;option&gt;0&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;<br>
+      &lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;&lt;option&gt;7&lt;/option&gt;<br>
+      &lt;option&gt;8&lt;/option&gt;&lt;option&gt;9&lt;/option&gt;&lt;/select&gt;&lt;select 
+      name=&quot;</font><font color="#FF0000" size="2">joinkeys1</font><font
+        size="2">&quot; size=&quot;1&quot;&gt;<br>
+      &lt;option&gt;0&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;<br>
+      &lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;&lt;option&gt;7&lt;/option&gt;<br>
+      &lt;option&gt;8&lt;/option&gt;&lt;option&gt;9&lt;/option&gt;&lt;/select&gt;&lt;select 
+      name=&quot;</font><font color="#FF0000" size="2">joinkeys1</font><font
+        size="2">&quot; size=&quot;1&quot;&gt;<br>
+      &lt;option&gt;0&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;<br>
+      &lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;&lt;option&gt;7&lt;/option&gt;<br>
+      &lt;option&gt;8&lt;/option&gt;&lt;option&gt;9&lt;/option&gt;&lt;/select&gt;&lt;select 
+      name=&quot;</font><font color="#FF0000" size="2">joinkeys1</font><font
+        size="2">&quot; size=&quot;1&quot;&gt;<br>
+      &lt;option&gt;0&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;<br>
+      &lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;&lt;option&gt;7&lt;/option&gt;<br>
+      &lt;option&gt;8&lt;/option&gt;&lt;option&gt;9&lt;/option&gt;&lt;/select&gt;<br>
+      この場合４つのフォームで選択した数値を順番に並べて 1列目と比較します。<br>
+      joinkeys1 は [keys*]型の先頭にjoinをつけただけだけですので<br>
+      [up*]や[down*]などすべての型に使えます。</font></p>
+    <p><font size="4"><strong>選択 [select* , value*]</strong></font><font
+        size="3">　補助型</font></p>
+    <blockquote> 
+      <p>[key][keys*][equal<font size="3">*</font>][up*][down*][join###]と言った型の宣言部分を選択する事が出来ます。この機能は２つのフォームを使って操作します。1つ目は検索型を指定するフォームです。フォームのname属性を[select*]とし、*に型を選択したい列番号を記入します。そしてvalue属性に検索型を記入します。選択はラジオボタンやドロップダウンメニュー等を使って指定します。<br>
+        そして２つ目のフォームは１つ目で選択した検索型の値となる物です。フォームのname属性を[value*]として、*に[select*]で指定したのと同じ列番号を指定します。</p>
+    </blockquote>
+    <blockquote> 
+      <p>
+        <select name="value3" size="1">
+          <option>　</option>
+          <option value="1000">\1,000</option>
+          <option value="2000">\2,000</option>
+          <option value="3000">\3,000</option>
+          <option value="4000">\4,000</option>
+          <option value="5000">\5,000</option>
+        </select>
+        <select name="select3" size="1">
+          <option>　</option>
+          <option value="up">以上</option>
+          <option value="down">以下</option>
+          <option value="equal">ピッタリ</option>
+        </select>
+        <br>
+        <font size="2">&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">value3</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option&gt;　&lt;/option&gt;<br>
+        &lt;option value=&quot;1000&quot;&gt;\1,000&lt;/option&gt;<br>
+        &lt;option value=&quot;2000&quot;&gt;\2,000&lt;/option&gt;<br>
+        &lt;option value=&quot;3000&quot;&gt;\3,000&lt;/option&gt;<br>
+        &lt;option value=&quot;4000&quot;&gt;\4,000&lt;/option&gt;<br>
+        &lt;option value=&quot;5000&quot;&gt;\5,000&lt;/option&gt;<br>
+        &lt;/select&gt;&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">select3</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option&gt;　&lt;/option&gt;<br>
+        &lt;option value=&quot;up&quot;&gt;以上&lt;/option&gt;<br>
+        &lt;option value=&quot;down&quot;&gt;以下&lt;/option&gt;<br>
+        &lt;option value=&quot;equal&quot;&gt;ピッタリ&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        値段によって決めるとき</font></p>
+    </blockquote>
+    <p><font size="4"><strong>選択 [ IDn* , IDv* ] </strong></font><font
+        size="3">補助型</font></p>
+    <blockquote> 
+      <p>フォームのname属性にID番号を記入し自由に選択できるようにする物です。<br>
+        select,valueでは完全な宣言部分を選択させる事ができませんでしたが、このIDn,IDvを使うとそれが可能になります。</p>
+      <p>*の部分は適当なID番号数字を割り当ててください。(この番号は000～999の間の数字を自由に割り当てられます。)</p>
+      <p><tt>&lt;input type=text size=40 name=&quot;</tt><font
+            color="#FF0000"><tt>IDv001</tt></font><tt>&quot;&gt;<br>
+        &lt;select name=&quot;</tt><font color="#FF0000"><tt>IDn001</tt></font><tt>&quot;&gt;<br>
+        &lt;option&gt;and&lt;/option&gt;<br>
+        &lt;option&gt;or&lt;/option&gt;<br>
+        &lt;option&gt;not&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        行全体検索型でAND、OR、NOTのどれかを選べさせるとき。</tt></p>
+      <p><tt>&lt;input type=text size=40 name=&quot;</tt><font
+            color="#FF0000"><tt>IDv002</tt></font><tt>&quot;&gt;<br>
+        &lt;select name=&quot;</tt><font color="#FF0000"><tt>IDn002</tt></font><tt>&quot;&gt;<br>
+        &lt;option value=&quot;keys2&quot;&gt;日本語&lt;/option&gt;<br>
+        &lt;option value=&quot;keys3&quot;&gt;英　語&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        日本語(２列目)で検索させるか、英語(３列目)で検索させるかという簡単な選択肢に利用した場合。</tt></p>
+    </blockquote>
+    <p><font size="4"><strong>パラメータ直接検索 [query]</strong></font><font
+        size="3">　補助型</font></p>
+    <blockquote> 
+      <p><font size="3">FORMのメゾットにGETを指定したとき、検索結果のＵＲＬは「database.cgi?検索パラメータ」となっています。<br>
+        このパラメータを直接フォームで指定できる機能です。</font></p>
+      <p> &lt;select name=&quot;<font color="#FF0000">query</font>&quot;&gt;<br>
+        &lt;option value=&quot;down3=500&quot;&gt;～500円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=500<font color="#0000FF">&amp;amp;</font>down3=1000&quot;&gt;500～1000円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=1000<font color="#0000FF">&amp;amp;</font>down3=1500&quot;&gt;1000～1500円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=1500<font color="#0000FF">&amp;amp;</font>down3=2000&quot;&gt;1500～2000円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=2000<font color="#0000FF">&amp;amp;</font>down3=5000&quot;&gt;2000～5000円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=5000<font color="#0000FF">&amp;amp;</font>down3=10000&quot;&gt;5000～10000円&lt;/option&gt;<br>
+        &lt;option value=&quot;up3=10000&quot;&gt;10000円～&lt;/option&gt;<br>
+        &lt;/select&gt;</p>
+      <p>この用に直接検索フォームでGET時に表示されるパラメータを記入できます。<br>
+        この機能によって、上記のように１つのフォームで複数の検索パラメータを有効にすることが可能です。<br>
+        (&amp;を記入するときは &amp;amp; とする必要があります。)</p>
+      <p>またqueryフォームを複数使用する場合は次のように先頭に &amp;amp; をつける必要があります。<br>
+        value=&quot;<font color="#0000FF">&amp;amp;</font>up3=5000<font color="#0000FF">&amp;amp;</font>down3=10000&quot;&gt; 
+      </p>
+    </blockquote>
+    <p><font size="4"><strong>表示件数 [print]</strong></font><font
+        size="3">　制御型</font></p>
+    <blockquote> 
+      <p><font size="3">検索に該当したデータの表示件数を指定できます。</font></p>
+      <p><font size="2">&lt;select name=&quot;</font><font
+            color="#FF0000" size="2">print</font><font size="2">&quot; size=&quot;1&quot;&gt;<br>
+        &lt;option value=&quot;10&quot;&gt;10件&lt;/option&gt;<br>
+        &lt;option value=&quot;20&quot;&gt;20件&lt;/option&gt;<br>
+        &lt;option value=&quot;30&quot;&gt;30件&lt;/option&gt;<br>
+        &lt;option value=&quot;40&quot;&gt;40件&lt;/option&gt;<br>
+        &lt;option value=&quot;50&quot;&gt;50件&lt;/option&gt;<br>
+        &lt;/select&gt;</font></p>
+    </blockquote>
+    <p><font size="4"><strong>検索条件 [word]</strong></font><font
+        size="3">　補助型</font></p>
+    <blockquote> 
+      <p><font size="3">and,or,not型の検索で全角(２バイト文字)の「ＷＯＲＤ」という文字が含まれているデータを、「WORD」という半角文字(１バイト文字)で検索しても該当するように設定することが可能になります。ただしこの機能を使用すると検索スピードが落ちますので「低速」となります。（name属性 
+        word で value属性に 2を指定）</font></p>
+      <p><font size="3">またデフォルトでは検索条件は「半角英数字の小文字と大文字を区別しない」という検索条件ですが、「区別する」という検索条件も可能になります。（name属性 
+        word で value属性に 1を指定）</font></p>
+      <p><font size="3"><tt>&lt;select name=&quot;</tt></font><font
+            color="#FF0000" size="3"><tt>word</tt></font><font
+            size="3"><tt>&quot;&gt;<br>
+        &lt;option value=&quot;1&quot;&gt;大文字小文字を区別&lt;/option&gt;<br>
+        &lt;option selected value=&quot;0&quot;&gt;区別しない&lt;/option&gt;<br>
+        &lt;option value=&quot;2&quot;&gt;全角半角も区別しない&lt;/option&gt;<br>
+        &lt;/select&gt;<br>
+        検索条件を選択できるようにした場合</tt></font></p>
+    </blockquote>
+    <hr size="1">
+    <p>以上のフォームを数種類作っていくことで本格的なデータベースを作成することができます。</p>
+    <p>検索結果の表示方法もＣＧＩ内部で編集できるようになっているので、データに合わせて編集してください。</p>
+  </form>
+</blockquote>
+
+<p>◆ヒント</p>
+
+<ul>
+    <li>一致検索機能を使えば沢山ある個人データの中から一つだけデータを引き出す事が可能</li>
+    <li>もしＣＳＶファイルで管理しているとき、高機能な表計算ソフトがあれば、そのソフトで開いて、保存するときに「タブ区切り」というフォーマットを選んでおけば検索スピードが向上。</li>
+    <li>検索該当をすべて一つのテーブルに表示するような方法をとっていると夜間などに検索結果の表示速度が遅くなると言う欠点があります。この場合１回の検索で表示する件数を少なめに設定しておく事をお勧めします。</li>
+</ul>
+
+<p>◆もし上手く作動しなかかった場合</p>
+
+<blockquote>
+    <p>　・あなたのサーバーはＣＧＩを使用する事が可能ですか？<br>
+    　・パーミッションの設定は合っていますか？<br>
+    　・ファイルの名前はあっていますか？<br>
+    　・ＣＧＩファイルの１行目はサーバーの設定に合っていますか？<br>
+    　・どうしても動かない様であれば<a
+    href="http://cgiroom.nu/tree/treebbs.cgi">サポート掲示板</a>へ</p>
+</blockquote>
+
+<hr>
+
+<p align="center">Copyright (c) 1998-1999 <a
+href="http://cgiroom.nu" target="_top">CGIROOM</a></p>
+</body>
+</html>

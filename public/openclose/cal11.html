@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>cal.js</title>
+		<link rel="stylesheet" href="cal/cal.css" type="text/css">
+        <script language="Javascript">
+		<!--
+if(navigator.appVersion.charAt(0) >= 3) {
+ var img = new Array();
+  
+img[0] = new Image();  img[0].src = "../img/but_c01.gif"; //
+img[1] = new Image();  img[1].src = "../img/but_c01over.gif"; //
+img[2] = new Image();  img[2].src = "../img/but_c02.gif"; //
+img[3] = new Image();  img[3].src = "../img/but_c02over.gif"; //
+img[4] = new Image();  img[4].src = "../img/but_c03.gif"; //
+img[5] = new Image();  img[5].src = "../img/but_c03over.gif";
+ }
+ function change_image(nam,num) {
+if(navigator.appVersion.charAt(0) >= 3) {                                                                                                                  
+ document.images[nam].src = img[num].src;
+   }
+}
+//-->
+
+</script>
+</head>
+	<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+	<table width="140" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td width="9"></td>
+	    <td><a href="cal11.html" target="_cal" onMouseOver="change_image('buttonc02',03)" onMouseOut="change_image('buttonc02',03)"><img src="../img/but_c02over.gif" width="41" height="17" border="0" alt="home" name="buttonc02"></a></td>
+	    <td><a href="cal21.html" target="_cal" onMouseOver="change_image('buttonc03',05)" onMouseOut="change_image('buttonc03',04)"><img src="../img/but_c03.gif" width="41" height="17" border="0" alt="home" name="buttonc03"></a></td>
+<!--	    <td><a href="cal10.html" target="_cal" onMouseOver="change_image('buttonc01',01)" onMouseOut="change_image('buttonc01',00)"><img src="../img/but_c01.gif" width="41" height="17" border="0" alt="home" name="buttonc01"></a></td>-->
+	    <td width="8"></td>
+      </tr>
+	  <tr>
+	    <td colspan="5" align="center"><img src="../img/c_back02.gif" alt="" width="135" height="11"></td>
+      </tr>
+	  <tr>
+	    <td colspan="5" align="center"><script type="text/javascript" src="cal/cal11.js" charset="UTF-8"></script></td>
+      </tr>
+    </table>
+		
+        
+        </body>
+</html>

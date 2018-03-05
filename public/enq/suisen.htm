@@ -1,0 +1,86 @@
+<HTML>
+
+<HEAD>
+ <TITLE>図書館備付図書の推薦</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="./images/back.gif" LINK="#777777" VLINK="#333333">
+
+<CENTER>
+
+<P>
+
+<FORM METHOD="post" ACTION="/cgi-bin/mail1/tomail.pl">
+<INPUT TYPE="hidden" NAME="subject" value="図書館備付図書の推薦">
+
+<H2></H2>
+
+<DL>
+<DT><H3><FONT COLOR="#993311">図書館備付図書の推薦</FONT></H3>
+<DD>
+<TABLE BORDER>
+
+<TR><TD><B>推薦者名</B></TD><TD><INPUT NAME="氏名" TYPE=text SIZE="60"></TD></TR>
+
+<TR><TD><B>Ｅ－ＭＡＩＬ</B></TD><TD><INPUT NAME="email" TYPE=text SIZE="60"></TD></TR>
+
+<TR>
+<TD><B>所属学科</B></TD>
+<TD>
+<SELECT NAME="所属学科">
+<OPTION VALUE="応用数学科">応用数学科
+<OPTION VALUE="化学科">化学科
+<OPTION VALUE="応用物理学科">応用物理学科
+<OPTION VALUE="基礎理学科">基礎理学科
+<OPTION VALUE="生物化学科">生物化学科
+<OPTION VALUE="臨床生命科学科">臨床生命科学科
+<OPTION VALUE="動物学科">動物学科
+
+<OPTION VALUE="バイオ・応用化学科">バイオ・応用化学科
+<OPTION VALUE="機械システム工学科">機械システム工学科
+<OPTION VALUE="電気電子システム工学科">電気電子システム工学科
+<OPTION VALUE="情報工学科">情報工学科
+<OPTION VALUE="知能機械工学科">知能機械工学科
+<OPTION VALUE="生体医工学科">生体医工学科
+<OPTION VALUE="生命医療工学科">生命医療工学科
+<OPTION VALUE="建築学科">建築学科
+
+<OPTION VALUE="情報科学科">情報科学科
+<!--OPTION VALUE="コンピュータシミュレーション学科">コンピュータシミュレーション学科-->
+<OPTION VALUE="社会情報学科">社会情報学科
+<OPTION VALUE="生物地球学科">生物地球学科
+<OPTION VALUE="初等教育学科">初等教育学科
+<OPTION VALUE="中等教育学科">中等教育学科
+<OPTION VALUE="その他">その他
+</SELECT>
+</TD>
+</TR>
+
+<TR><TD colspan=2><B>推薦される資料</B></TD></TR>
+
+<TR><TD><B>１．資料の形態</B></TD><TD><INPUT TYPE="radio" NAME="形態" VALUE="図書" CHECKED>図書
+
+<INPUT TYPE="radio" NAME="形態" VALUE="視聴覚資料">視聴覚資料<INPUT TYPE="radio" NAME="形態" VALUE="その他">その他</TD></TR>
+
+<TR><TD colspan=2><B>２．書誌事項</B></TD></TR>
+
+<TR><TD><B>　　書　名</B></TD><TD><TEXTAREA NAME="書名" ROWS=2 COLS=60></TEXTAREA></TD></TR>
+
+<TR><TD><B>　　著者名</B></TD><TD><INPUT NAME="著者" TYPE=text SIZE="60"></TD></TR>
+
+<TR><TD><B>　　出版者</B></TD><TD><INPUT NAME="出版" TYPE=text SIZE="60"></TD></TR>
+
+<TR><TD><B>　　コメント欄</B></TD><TD><TEXTAREA NAME="その他" ROWS=2 COLS=60></TEXTAREA></TD></TR>
+
+</TABLE>
+購入の可否はメールにてご連絡します。
+<P>
+<INPUT TYPE="submit" VALUE="転　　送">　<INPUT TYPE="reset" VALUE="やり直し">
+</FORM>
+<P><HR><P>
+
+<A HREF="http://www.lib.ous.ac.jp/">図書館ホームページへ戻る</A>
+
+</CENTER>
+</BODY>
+</HTML>

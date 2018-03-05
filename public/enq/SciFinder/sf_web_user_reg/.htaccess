@@ -1,0 +1,6 @@
+AuthName "Staff Only"
+AuthType Basic
+AuthUserFile /var/www/passwd/.htpasswd
+AuthGroupFile /dev/null
+require user sfwebous
+

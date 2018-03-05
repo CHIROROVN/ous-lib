@@ -1,0 +1,955 @@
+@charset "utf-8";
+
+/*--------------------------------------------------------------------------------------------------
+
+   page
+			   - index
+						- guide
+						
+						
+						- gaiyou
+
+--------------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------
+  index
+--------------------------------------------------------------------------------------------------*/
+#contWrap {
+	width: 980px;
+	margin: 0 auto;
+	background: url(../image/contwrap_back.png) repeat-y 0 0;
+}
+
+#cont {
+	float: left;
+	width: 720px;
+	margin: 0 0 0 10px;
+	padding: 33px 0 0;
+}
+
+#cont h2 {
+	padding: 0 0 0 20px;
+	letter-spacing: 1px;
+	line-height: 43px;
+	background: url(../image/line-01.png) no-repeat 0 0;
+	border-bottom: 2px solid #CCC;
+	font-size: 20px;
+	font-weight: bold;
+	color: #525252;
+}
+
+#cont h2 a {
+	float: right;
+	margin: 10px 0 0;
+}
+
+#side {
+	float: right;
+	width: 220px;
+	padding: 33px 0 0;
+}
+
+#side .box {
+	width: 200px;
+	margin: 0 auto 20px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+#side .box p.midashi {
+	text-align: center;
+	margin: 0 0 10px;
+}
+
+#side .box iframe {
+	margin: 0 0 -10px;
+}
+
+#side .box .calendar {
+	margin: 0 auto;
+	line-height: 1;
+}
+
+#side .box ul {
+	margin: 0;
+	padding: 0 0 0 8px;
+	list-style: none;
+}
+
+#side .box ul li {
+	background: url(../image/arrow-04.png) no-repeat 0 center;
+	margin: 0 0 8px;
+	padding: 0 0 0 8px;
+}
+
+#side .box ul li a {
+	color: #333333;
+	text-decoration: none;
+}
+
+#side .box p.links {
+	text-align: center;
+	margin: 0 0 10px;
+}
+
+#side .counter {
+	margin: 40px 0;
+	text-align: center;
+}
+
+#side .staff {
+	text-align: center;
+}
+
+#topslider {
+	height: 255px;
+	border-bottom: 1px solid #EBEFF1;
+}
+
+.sp-next-arrow:after, .sp-next-arrow:before, .sp-previous-arrow:after, .sp-previous-arrow:before {
+	background-color: #005876 !important;
+}
+
+.sp-horizontal .sp-previous-arrow {
+	left: 10px !important;
+}
+
+.sp-horizontal .sp-next-arrow {
+	right: 10px !important;
+}
+
+.indexSearch {
+	margin: 0 0 10px;
+	padding: 17px 20px;
+	background-color: #F9F9F9;
+}
+
+.indexSearch input[type=text] {
+	width: 480px;
+	border: 1px solid #AAAAAA;
+	font-family: "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.indexSearch input[type=submit] {
+	padding: 0 10px;
+	font-family: "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.searchlink {
+	margin: 0 0 50px;
+}
+
+.sl01 {
+	width: 350px;
+	float: left;
+	background-color: #F9F9F9;
+	margin: 0 0 4px 4px;
+}
+
+.sl02 {
+	width: 350px;
+	float: right;
+	background-color: #F9F9F9;
+	margin: 0 4px 0 0;
+}
+
+.searchDetail p,
+.searchDetail2 p {
+	float: left;
+	width: 84px;
+}
+
+.searchDetail dl,
+.searchDetail2 dl {
+	float: right;
+	width: 266px;
+}
+
+.searchDetail dl dt {
+	padding: 8px 10px 2px;
+	color: #7B9600 !important;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.searchDetail dl dd {
+	padding: 0 10px;
+	color: #333333 !important;
+}
+
+.searchDetail2 dl dt {
+	padding: 8px 10px 2px;
+	color: #7B9600 !important;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.searchDetail2 dl dd {
+	padding: 0 10px;
+	color: #333333 !important;
+	line-height: 1.3;
+}
+
+.sl01 a,
+.sl02 a {
+	display: block;
+	width: 350px;
+	height: 84px;
+}
+
+.sl01:hover,
+.sl02:hover {
+ box-shadow: 2px 2px 4px #AAAAAA; 
+}
+
+.infoList {
+	margin: 0 10px 50px;
+	padding: 0;
+	list-style: none;
+}
+
+.infoList li {
+	margin: 0;
+	padding: 0;
+}
+
+.infoList li a {
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid #DDDDDD;
+	text-decoration: none;
+}
+
+.infoList li a span {
+	color: #333333;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.infoList li a:link, .infoList li a:visited {
+	background: url(../image/arrow-01.png) no-repeat 99% center;
+}
+
+.infoList li a:hover, .infoList li a:active {
+	background: url(../image/arrow-02.png) no-repeat 100% center;
+}
+
+.indexNavi {
+	margin: 0 0 50px;
+	padding: 0;
+	list-style: none;
+}
+
+.indexNavi li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.indexNavi li:nth-child(1) {
+	margin: 0 20px 0 0;
+}
+
+.denshi {
+	margin: 24px 0 50px;
+	padding: 0;
+	list-style: none;
+}
+
+.denshi li {
+	float: left;
+	margin: 0 15px 0 0;
+	padding: 0;
+}
+
+.denshi li:last-child {
+	margin: 0;
+}
+
+.repository {
+	margin: 10px 0 40px;
+	padding: 0;
+	list-style: none;
+}
+
+.repository li {
+	float: left;
+	width: 350px;
+	margin: 0 15px 10px 0;
+	padding: 0;
+}
+
+.repository li:nth-child(2n) {
+	margin: 0 0 10px;
+}
+
+.repository li a {
+	display: block;
+	padding: 8px 10px 8px 26px;
+	background: url(../image/arrow-03.png) #F9F9F9 no-repeat 10px center;
+	color: #333333;
+	text-decoration: none;
+}
+
+.repository li a:hover {
+	text-decoration: underline;
+}
+
+.jyouhou {
+	width: 620px;
+	margin: 10px auto 40px;
+	padding: 0;
+	list-style: none;
+}
+
+.jyouhou li {
+	float: left;
+	width: 182px;
+	margin: 0 37px 30px 0;
+	padding: 0;
+	height: 52px;
+	text-align: center;
+ display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.jyouhou li:nth-child(3n) {
+	margin: 0 0 30px;
+}
+
+
+
+/*------------------------------------------------------------------------------------------------
+  guide
+--------------------------------------------------------------------------------------------------*/
+#secTitleBox.guide {
+	background: url(../image/guide_title_back.jpg) no-repeat center 0;
+	background-size: cover;
+}
+
+/*guide-01*/
+.riyou {
+	background-color: #F9F9F9;
+	margin: 0 0 10px;
+	padding: 20px;
+}
+
+.riyou dt {
+	padding: 0 0 0 16px;
+	font-size: 16px;
+	font-weight: bold;
+	background: url(../image/arrow-06.png) no-repeat 0 center;
+}
+
+/*guide-02*/
+.kashidashi {
+	margin: 0 0 30px;
+	border-collapse: collapse;
+}
+
+.kashidashi th {
+	padding: 10px;
+	border: 1px solid #CCC;
+	background-color: #EEEEEE;
+}
+
+.kashidashi td {
+	padding: 10px;
+	border: 1px solid #CCC;
+	text-align: center;
+}
+
+.kashidashi td.koumoku {
+	background-color: #F1F7D6;
+	font-weight: bold;
+}
+
+/*guidebooks*/
+.guidebook {
+	width: 560px;
+	margin: 0 auto 40px;
+	padding: 0 0 10px;
+	border-bottom: 1px dashed #CCC;
+}
+
+.guidebookImg {
+	width: 200px;
+	float: left;
+	text-align: center;
+}
+
+.guidebookText {
+	width: 300px;
+	padding-left: 10px;
+	float: right;
+	border-left: 3px solid #099;
+	line-height: 1.4;
+}
+
+.guidebookText p {
+	margin: 0 !important;
+}
+
+/*gakugai_riyou*/
+.gakugaiUse {
+	margin: 0 20px 40px;
+	background: url(../image/line-02.png) repeat-y 18px 0;
+}
+
+.gakugaiUse dt {
+	width: 60px;
+	float: left;
+}
+
+.gakugaiUse dd {
+	margin: 0 0 10px 60px;
+	padding: 8px 0 10px;
+	line-height: 1.4;
+}
+
+.gakugaiUse dd p {
+	margin: 0 0 10px !important;
+}
+
+.gakugaiUse dd p.midashi {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.gakugaiJikan {
+	margin: 0 30px 40px;
+}
+
+.gakugaiJikan p {
+	margin: 0 0 3px !important;
+	font-weight: bold;
+}
+
+.gakugaiJikan dl {
+	margin: 0 14px;
+}
+
+.gakugaiJikan dt {
+	width: 80px;
+	float: left;
+	padding: 3px 0;
+}
+
+.gakugaiJikan dd {
+	padding: 3px 0 3px 80px;
+	border-bottom: 1px solid #FFF;
+}
+
+.tujyo {
+	width: 420px;
+	float: left;
+	padding: 10px 10px 15px;
+	background-color: #F9F9F9;
+}
+
+.kyugyotyu {
+	width: 420px;
+	float: right;
+	padding: 10px 10px 15px;
+	background-color: #F9F2EF;
+}
+
+.gakugaiRent {
+	margin: 0 0 10px;
+}
+
+.gakugaiRent dt {
+	width: 80px;
+	float: left;
+}
+
+.gakugaiRent dd {
+	padding: 0 0 0 80px;
+}
+
+/*------------------------------------------------------------------------------------------------
+  aboutlibraries
+--------------------------------------------------------------------------------------------------*/
+/*gaiyou*/
+.gaiyou dt {
+	padding-left:10px;
+	margin:30px 0 10px;
+	border-left:3px solid #099;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.gaiyou table {
+	border-collapse: collapse;
+}
+
+.gaiyou table th {
+	padding: 10px;
+	border: 1px solid #CCC;
+	background-color: #EEEEEE;
+}
+
+.gaiyou table td {
+	padding: 10px;
+	border: 1px solid #CCC;
+}
+
+.gaiyou table .koumoku ,
+.gaiyou2 table tr:nth-child(n+4) th {
+	background-color:#F1F7D6;
+}
+
+.gaiyou table td span {
+	margin-left:100px;
+}
+
+.gaiyou .tb1 td:first-child {
+	width:202px;
+	background-color:#F1F7D6;
+}
+
+.gaiyou table.align-right td ,
+.gaiyou2 td {
+	text-align:right;
+}
+
+.gaiyou .system table {
+	border:solid 1px #CCC;
+	margin-bottom:1px;
+	width:769px;
+}
+
+.gaiyou .system td {
+	border:none;
+}
+
+.gaiyou .system td:first-child {
+	width:200px;
+	vertical-align:top;
+}
+
+.gaiyou .lasttable {
+	margin:0 0 30px;
+}
+
+.gaiyou2 table {
+	margin-bottom:30px;
+}
+
+.gaiyou2 dd p {
+	margin-top:-30px!important;
+}
+
+
+/*kengakutaiken*/
+.kengakutaiken .riyou dt {
+	background:none;
+	padding:0;
+	background:linear-gradient(transparent 80%, #ABCE03 0%);
+	display:inline;
+}
+
+.kengakutaiken .riyou dt::before {
+	content:'Ｑ：';
+}
+
+.kengakutaiken .riyou dd::before {
+	content:'Ａ：';
+}
+
+/*ritonews*/
+.ritonews table {
+	width:450px;
+	float:left;
+	margin-right:60px;
+}
+
+.ritonews table:nth-child(2) {
+	margin-right:0;
+}
+
+.ritonews .clear {
+	clear:left;
+}
+
+.rsd img {
+	vertical-align:middle;
+}
+
+.rsd table {
+	width:100%;
+	margin-bottom:30px;
+}
+
+.rsd table th:nth-child(1) {
+	width:33px;
+}
+.rsd table th:nth-child(2) {
+	width:50px;
+}
+.rsd table th:nth-child(3) {
+	width:137px;
+}
+.rsd table th:nth-child(5) {
+	width:55px;
+}
+
+.rsd td li {
+	list-style:none;
+}
+
+.rsd td li::before {
+	content:'■ ';
+	color:#FFD700;
+}
+
+.syohyou td:nth-child(5) {
+	width:60px;
+}
+.syohyou td:nth-child(6) {
+	width:200px;
+}
+
+/*------------------------------------------------------------------------------------------------
+  information
+--------------------------------------------------------------------------------------------------*/
+.pager ul {
+	list-style:none;
+	padding:0;
+	text-align:center;
+	margin-bottom:50px;
+}
+
+.pager li {
+	display:inline-block;
+	margin:0 5px;
+	border:solid 1px #CCCCCC;
+	border-radius:3px;
+}
+
+.pager li:hover {
+	background:#EEEEEE;
+}
+
+.pager li a {
+	text-decoration:none;
+	width:30px;
+	height:30px;
+	padding:2px 7px;
+	display:block;
+}
+
+.pager li a:visited {
+	color:#333333;
+}
+
+.pager .now {
+	background:#EEEEEE;
+	cursor:default;
+	padding:2px 7px;
+}
+
+.d_pager {
+	text-align:center;
+	margin:30px 0;
+}
+
+.d_pager a {
+	border:solid 1px #CCCCCC;
+	margin:0 30px;
+	padding: 5px 10px;
+	text-decoration:none;
+}
+
+.d_pager a:visited {
+	color:#333333;
+}
+
+.d_pager a:hover {
+	background:#EEEEEE;
+}
+
+.wnDetail {
+	margin: 0 0 60px;
+	padding: 0;
+	list-style: none;
+}
+
+.wnDetail li {
+	margin: 0;
+	padding: 0;
+}
+
+.wnDetail li a {
+	display: block;
+	padding: 8px 5px 8px 32px;
+	border-bottom: 1px dashed #D6DCB6;
+	background: url(../image/arrow-08.png) no-repeat 10px 10px;
+	background-size: 14px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.wnDetail li a:hover, .wnDetail li a:active {
+	background: url(../image/arrow-08.png) no-repeat 10px 10px;
+	background-size: 14px;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+  inquire
+--------------------------------------------------------------------------------------------------*/
+table.inquiry {
+	margin:0 auto 30px;
+	border-collapse: collapse;	
+}
+
+table.inquiry th {
+	background-color: #EEEEEE;
+	padding: 10px;
+	border: 1px solid #CCC;
+}
+
+table.inquiry td {
+	padding: 10px;
+	border: 1px solid #CCC;
+}
+
+/*------------------------------------------------------------------------------------------------
+  application ill,sensyo
+--------------------------------------------------------------------------------------------------*/
+ul.app {
+	padding:0;
+}
+
+ul.app li {
+	margin-left:45px;
+}
+
+.marginbottom {
+	margin-bottom:30px;
+}
+
+.ill .riyou dt {
+	padding:0;
+	background:none;
+}
+
+/*------------------------------------------------------------------------------------------------
+  links
+--------------------------------------------------------------------------------------------------*/
+/*library*/
+.library dd ul ,
+.library dd li {
+	margin:0;
+	list-style:none;
+	padding-left:20px;
+}
+
+.library dd li li {
+	padding:0;
+}
+
+/*------------------------------------------------------------------------------------------------
+  list
+--------------------------------------------------------------------------------------------------*/
+.zasshi .pager {
+	font-size:16px;
+}
+
+.zasshi ul {
+	padding-left:0;
+}
+
+.zasshi ul span {
+	font-size:24px;
+	font-weight:bold;
+	color:#006699;
+	background-color: #E4F4F8;
+	display: block;
+	padding: 0 10px;
+	margin: 0 0 10px;
+}
+
+.zasshi ul li {
+	margin-left:22px;
+}
+
+.sinbun ul.s1 {
+	/*padding-left:0;*/
+}
+
+.sinbun ul.s1 li {
+	float: left;
+	width: 50%;
+}
+
+/*.sinbun ul:nth-child(4),
+.sinbun ul:nth-child(5) {
+	float:left;
+	margin-right:100px;
+}*/
+
+.sinbun .clear {
+	clear:left;
+}
+
+.gotop {
+	display: block;
+	width: 120px;
+	padding: 5px;
+	margin: 0 0 20px;
+	border: 1px solid #007197;
+	text-align: center;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+  elecj
+--------------------------------------------------------------------------------------------------*/
+.elecjnote {
+	width: 98%;
+	margin: 0 auto 30px;
+	line-height: 1.4;
+}
+
+.toi {
+	margin: 60px 80px;
+	border: 1px dashed #0085B2;
+	padding: 20px;
+}
+
+.toi p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.toi dl {
+	margin: 0 0 10px;
+	padding:10px;
+	background-color: #F9F9F9;
+}
+
+.toi dl dt {
+	background: url(../image/arrow-06.png) no-repeat 0 7px;
+	padding: 0 0 0 16px;
+	font-weight: bold;
+}
+
+.elecjnote th {
+	border:1px solid #CCC;
+	padding: 8px;
+	background-color: #E3F5BE;
+	border-bottom: 3px double #CCC;
+}
+
+.elecjnote td {
+	border:1px solid #CCC;
+	padding: 8px;
+	vertical-align: top;
+}
+
+.elecjnote tr.bk {
+	background-color: #EEEEEE;
+}
+
+.elecjnote td:nth-child(1) {
+	width: 200px;
+}
+
+.elecjnote2 {
+	width: 98%;
+	margin: 0 auto 30px;
+	line-height: 1.4;
+}
+
+.elecjnote2 th {
+	border:1px solid #CCC;
+	padding: 8px;
+	background-color: #E3F5BE;
+	border-bottom: 3px double #CCC;
+}
+
+.elecjnote2 td {
+	border:1px solid #CCC;
+	padding: 8px;
+	vertical-align: top;
+}
+
+.elecjnote2 tr.bk {
+	background-color: #EEEEEE;
+}
+
+.elecjnote3 {
+	width: 98%;
+	margin: 0 auto 30px;
+	line-height: 1.4;
+}
+
+.elecjnote3 th {
+	border:1px solid #CCC;
+	padding: 8px;
+	background-color: #E3F5BE;
+	border-bottom: 3px double #CCC;
+}
+
+.elecjnote3 td {
+	border:1px solid #CCC;
+	padding: 8px;
+	vertical-align: top;
+}
+
+.elecjnote3 tr.bk {
+	background-color: #EEEEEE;
+}
+
+/*------------------------------------------------------------------------------------------------
+  internet
+--------------------------------------------------------------------------------------------------*/
+.internetBasic {
+	margin: 0 30px 30px;
+	padding: 20px 20px 0;
+	border: 3px double #CCC;
+}
+
+.internetBasic p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.internetOJlist li {
+	float: left;
+	width: 33.333%;
+}
+
+.internetTb1 {
+	width: 98%;
+	margin: 0 auto 30px;
+	line-height: 1.4;
+}
+
+.internetTb1 th {
+	border:1px solid #CCC;
+	padding: 8px;
+	background-color: #E3F5BE;
+	border-bottom: 3px double #CCC;
+}
+
+.internetTb1 td {
+	border:1px solid #CCC;
+	padding: 8px;
+	vertical-align: top;
+}
+
+.internetTb1 tr:nth-of-type(odd) {
+	background-color: #EEEEEE;
+}
+
+

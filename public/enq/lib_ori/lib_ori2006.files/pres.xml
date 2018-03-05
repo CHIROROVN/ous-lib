@@ -1,0 +1,82 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+ xmlns:oa="urn:schemas-microsoft-com:office:activation">
+ <p:presentation sizeof="screen" notessizex="4205" notessizey="6240"
+  gridspacingx="46448" gridspacingy="46448">
+  <p:master id="3" slidesn="0,0" type="main" href="master03.htm"
+   xmlhref="master03.xml" template="標準デザイン" layout="title_body"
+   slots="title,body,dateTime,footer,slideNumber">
+   <p:schemes>
+    <p:colorscheme
+     colors="#ffffff,#000000,#808080,#000000,#00cc99,#3333cc,#ccccff,#b2b2b2"/>
+    <p:colorscheme
+     colors="#0000ff,#ffffff,#000000,#ffff00,#ff9900,#00ffff,#ff0000,#969696"/>
+    <p:colorscheme
+     colors="#ffffcc,#000000,#666633,#808000,#339933,#800000,#0033cc,#ffcc66"/>
+    <p:colorscheme
+     colors="#ffffff,#000000,#333333,#000000,#dddddd,#808080,#4d4d4d,#eaeaea"/>
+    <p:colorscheme
+     colors="#ffffff,#000000,#808080,#000000,#ffcc66,#0000ff,#cc00cc,#c0c0c0"/>
+    <p:colorscheme
+     colors="#ffffff,#000000,#808080,#000000,#c0c0c0,#0066ff,#ff0000,#009900"/>
+    <p:colorscheme
+     colors="#ffffff,#000000,#808080,#000000,#3399ff,#99ffcc,#cc00cc,#b2b2b2"/>
+   </p:schemes>
+  </p:master>
+  <p:master id="1" slidesn="1C52902,47FB1D80" type="notes" href="master01.htm"
+   layout="notes" slots="header,dateTime,slideImage,body,footer,slideNumber"/>
+  <p:slide id="1" slidesn="0,0" href="slide0001.htm"/>
+  <p:slide id="2" slidesn="0,0" href="slide0002.htm"/>
+  <p:slide id="3" slidesn="0,0" href="slide0003.htm"/>
+  <p:slide id="4" slidesn="0,0" href="slide0004.htm"/>
+  <p:slide id="5" slidesn="0,0" href="slide0005.htm"/>
+  <p:slide id="6" slidesn="0,0" href="slide0006.htm"/>
+  <p:slide id="7" slidesn="0,0" href="slide0007.htm"/>
+  <p:slide id="8" slidesn="0,0" href="slide0008.htm"/>
+  <p:slide id="9" slidesn="0,0" href="slide0009.htm"/>
+  <p:slide id="55" slidesn="0,0" href="slide0055.htm"/>
+  <p:slide id="10" slidesn="0,0" href="slide0010.htm"/>
+  <p:slide id="11" slidesn="0,0" href="slide0011.htm"/>
+  <p:slide id="12" slidesn="0,0" href="slide0012.htm"/>
+  <p:slide id="57" slidesn="0,0" href="slide0057.htm"/>
+  <p:slide id="13" slidesn="0,0" href="slide0013.htm"/>
+  <p:slide id="56" slidesn="0,0" href="slide0056.htm"/>
+  <p:slide id="14" slidesn="0,0" href="slide0014.htm"/>
+  <p:slide id="15" slidesn="0,0" href="slide0015.htm"/>
+  <p:slide id="16" slidesn="0,0" href="slide0016.htm"/>
+  <p:slide id="17" slidesn="0,0" href="slide0017.htm"/>
+  <p:slide id="18" slidesn="0,0" href="slide0018.htm"/>
+  <p:slide id="19" slidesn="0,0" href="slide0019.htm"/>
+  <p:slide id="20" slidesn="0,0" href="slide0020.htm"/>
+  <p:slide id="21" slidesn="0,0" href="slide0021.htm"/>
+  <p:slide id="25" slidesn="0,0" href="slide0025.htm"/>
+  <p:slide id="26" slidesn="0,0" href="slide0026.htm"/>
+  <p:slide id="27" slidesn="0,0" href="slide0027.htm"/>
+  <p:slide id="28" slidesn="0,0" href="slide0028.htm"/>
+  <p:slide id="30" slidesn="0,0" href="slide0030.htm"/>
+  <p:slide id="31" slidesn="0,0" href="slide0031.htm"/>
+  <p:slide id="58" slidesn="0,0" href="slide0058.htm"/>
+  <p:slide id="32" slidesn="0,0" href="slide0032.htm"/>
+  <p:slide id="33" slidesn="0,0" href="slide0033.htm"/>
+  <p:slide id="34" slidesn="0,0" href="slide0034.htm"/>
+  <p:slide id="36" slidesn="0,0" href="slide0036.htm"/>
+  <p:slide id="37" slidesn="0,0" href="slide0037.htm"/>
+  <p:slide id="60" slidesn="0,0" href="slide0060.htm"/>
+  <p:slide id="38" slidesn="0,0" href="slide0038.htm"/>
+  <p:slide id="50" slidesn="0,0" href="slide0050.htm"/>
+  <p:slide id="39" slidesn="0,0" href="slide0039.htm"/>
+  <p:slide id="40" slidesn="0,0" href="slide0040.htm"/>
+  <p:viewstate type="slideView" restoredleft="156" restoredtop="946"
+   manualadjustleft="t" manualadjusttop="t" hideoutlineicons="t"/>
+  <p:font name="Times New Roman" charset="0" type="4"/>
+  <p:font name="ＭＳ Ｐゴシック" charset="128" type="4"/>
+  <p:font name="ＭＳ Ｐ明朝" charset="128" type="4"/>
+  <p:font name="Arial" charset="0" type="4"/>
+  <p:headersfooters formatid="0" noheader="t"/>
+  <p:headersfooters notes="t" slidenumber="t"/>
+  <p:pptdocumentsettings framecolors="WhiteTextOnBlack" hideslideanimation="t"
+   browsersupport="v4"/>
+ </p:presentation>
+ <o:shapedefaults v:ext="edit" spidmax="72708"/>
+</xml>

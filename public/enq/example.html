@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title>メールフォームCGI</title>
+		<meta name="revisit_after" content="7 days" />
+		<meta name="robots" content="ALL" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<link rel="index" href="index.html" />
+	</head>
+	<body>
+		<div id="mf_wrapper">
+			<div id="mf_header">
+				<h1>EXAMPLE HTML</h1>
+				<h2>MAILFORM CGI</h2>
+			</div>
+			<!--メールフォーム用のHTMLタグはここから-->
+			<form id="mailform" method="post" action="../cgi-bin/mailform/send.cgi" onsubmit="return sendmail(this);">
+				<table border="0" cellspacing="0" cellpadding="0" class="mailform">
+					<tr>
+						<th>メールアドレス<span>*</span><p>e-mail address</p></th>
+						<td><input type="text" name="email(必須)" size="50" maxlength="50" class="mf" /></td>
+					</tr>
+					<tr>
+						<th>確認用メールアドレス<span>*</span><p>e-mail address</p></th>
+						<td><input type="text" name="confirm_email" size="50" class="mf" /></td>
+					</tr>
+					<tr>
+						<th>お名前<span>*</span><p>your name</p></th>
+						<td><input type="text" name="お名前(必須)" size="30" /></td>
+					</tr>
+					<tr>
+						<th>性別<span>*</span><p>sex</p></th>
+						<td>
+							<input type="radio" name="性別(必須)" value="男" /> 男
+							<input type="radio" name="性別(必須)" value="女" /> 女
+							<input type="radio" name="性別(必須)" value="その他" /> その他
+						</td>
+					</tr>
+					<tr>
+						<th>チャームポイント<span>*</span><p>charm point</p></th>
+						<td>
+							<input type="checkbox" name="チャームポイント(必須)" value="目" /> 目
+							<input type="checkbox" name="チャームポイント(必須)" value="えくぼ" /> えくぼ
+							<input type="checkbox" name="チャームポイント(必須)" value="歯" /> 歯
+							<input type="checkbox" name="チャームポイント(必須)" value="陰茎" /> 陰茎
+							<input type="checkbox" name="チャームポイント(必須)" value="ヒ・ミ・ツ☆" /> ヒ・ミ・ツ☆
+						</td>
+					</tr>
+					<tr>
+						<th>住所<span>*</span><p>address</p></th>
+						<td><input type="text" name="住所(必須)" size="70" /></td>
+					</tr>
+					<tr>
+						<th>ご用件<span>*</span><p>inquiry body</p></th>
+						<td><textarea name="ご用件(必須)" rows="10" cols="70"></textarea></td>
+					</tr>
+					<tr>
+						<th><span>*</span>は必須項目です。</th>
+						<td><input type="submit" value="メールを送信する" /> <input type="reset" name="reset" value="リセット" /></td>
+					</tr>
+				</table>
+			</form>
+			<link rel="stylesheet" href="mailform/mailform.css" type="text/css">
+			<script type="text/javascript" src="mailform/mailform.js" charset="utf-8"></script>
+			<!--ここまでコピー＆ペーストすればまず間違いないです-->
+		</div>
+	</body>
+</html>

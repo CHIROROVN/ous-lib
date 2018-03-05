@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML lang="ja">
+<HEAD>
+
+<link rel="stylesheet" type="text/css" href="/lib.css">
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 11.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>文献複写申込</TITLE>
+</HEAD>
+
+<!--
+<BODY BACKGROUND="./images/back.gif" LINK="#777777" VLINK="#333333" onload="today()" >
+-->
+<body>
+<div id="continer">
+<div class="meisai">
+
+<CENTER>
+
+<P>
+
+<FORM NAME="form1" METHOD="post" ACTION="/cgi-bin/mailform/send.cgi" onsubmit="return sendmail(this);" >
+
+<H2></H2>
+<H3><FONT COLOR="#993311">文献複写申込</FONT></H3>
+<DL>
+  <DT>
+</DL>
+<H4>（注）申し込みは、<FONT COLOR="#ff0000">１件につき１論文</FONT>でお願い致します。複数の論文を１件にまとめて申し込まないでください。</H4>
+
+<H4>問い合わせ等の各種連絡は、入力されたメールアドレスに送信しますので、メールのチェックをお願いします。</H4>
+<DL>
+  <DD>
+  <TABLE BORDER>
+    <TR>
+      <TD><B>申込年月日</B></TD>
+      <TD><INPUT NAME="申込年月日" SIZE="30"></TD>
+      <TD><B>手配範囲<span>(*)</span></B></TD>
+      <TD><INPUT TYPE="radio" NAME="手配範囲(必須)" VALUE="国内" CHECKED>国内
+　<INPUT TYPE="radio" NAME="手配範囲(必須)" VALUE="海外">海外</TD>
+    </TR><TR>
+      <TD><B>申込者氏名<span>(*)</span></B></TD>
+      <TD><INPUT NAME="氏名(必須)" TYPE=text SIZE="30" required></TD>
+      <TD><B>所属学科<span>(*)</span></B></TD>
+      <TD><SELECT NAME="所属学科">
+        <OPTION VALUE="応用数学科">応用数学科
+
+        <OPTION VALUE="化学科">化学科
+
+        <OPTION VALUE="応用物理学科">応用物理学科
+
+        <OPTION VALUE="基礎理学科">基礎理学科
+
+        <OPTION VALUE="生物化学科">生物化学科
+
+        <OPTION VALUE="臨床生命科学科">臨床生命科学科
+
+        <OPTION VALUE="動物学科">動物学科
+
+        <OPTION VALUE="応用化学科">応用化学科
+
+        <OPTION VALUE="バイオ・応用化学科">バイオ・応用化学科
+
+        <OPTION VALUE="機械システム工学科">機械システム工学科
+
+        <OPTION VALUE="電子工学科">電子工学科
+
+        <OPTION VALUE="電気電子システム学科">電気電子システム学科
+
+        <OPTION VALUE="情報工学科">情報工学科
+
+        <OPTION VALUE="知能機械工学科">知能機械工学科
+
+        <OPTION VALUE="生体医工学科">生体医工学科
+
+        <OPTION VALUE="生命医療工学科">生命医療工学科
+
+        <OPTION VALUE="建築学科">建築学科
+
+        <OPTION VALUE="工学プロジェクトコース">工学プロジェクトコース
+
+        <OPTION VALUE="情報科学科">情報科学科
+
+        <!--OPTION VALUE="コンピュータシミュレーション学科">コンピュータシミュレーション学科-->
+
+        <!--OPTION VALUE="生物地球システム学科">生物地球システム学科-->
+
+        <OPTION VALUE="社会情報学科">社会情報学科
+
+        <OPTION VALUE="生物地球学科">生物地球学科
+
+        <OPTION VALUE="初等教育学科">初等教育学科
+
+        <OPTION VALUE="中等教育学科【国語教育コース】">中等教育学科【国語教育コース】
+
+        <OPTION VALUE="中等教育学科【英語教育コース】">中等教育学科【英語教育コース】
+
+        <OPTION VALUE="自然科学研究所">自然科学研究所
+
+        <OPTION VALUE="技術科学研究所">技術科学研究所
+
+        <OPTION VALUE="医用科学教育センター">医用科学教育センター
+
+        <OPTION VALUE="その他">その他
+
+      </SELECT></TD>
+    </TR><TR>
+      <TD><B>連絡先(携帯電話)<span>(*)</span></B></TD>
+      <TD><INPUT NAME="連絡先" TYPE=text SIZE="30" required></TD>
+      <TD><B>内　線</B></TD>
+      <TD><INPUT NAME="内　線" TYPE=text SIZE="20"></TD>
+    </TR><TR>
+      <TD><B>Ｅ－ＭＡＩＬ<span>(*)</span></B></TD>
+      <TD COLSPAN="3"><INPUT NAME="email(必須)"  TYPE="email" STYLE="ime-mode: disabled" SIZE="40" required></TD>
+    </TR><TR>
+      <TD><B>支　払<span>(*)</span></B></TD>
+      <TD COLSPAN="3">
+      <INPUT TYPE="radio" NAME="支払(必須)" VALUE="私費">私費
+      <INPUT TYPE="radio" NAME="支払(必須)" VALUE="公費（個人研究費）">公費（個人研究費）
+      <INPUT TYPE="radio" NAME="支払(必須)" VALUE="公費（実験実習費）">公費（実験実習費）<BR>
+      　　　　※学生が公費を使う場合の担当教員名=><INPUT NAME="公費負担教員名" TYPE=text SIZE="40"><BR>
+      <INPUT TYPE="radio" NAME="支払(必須)" VALUE="その他">その他（科研費は不可） <INPUT NAME="その他支払方法" TYPE=text SIZE="60"></TD>
+    <TR>
+      <TD><B>内　容<span>(*)</span></B></TD>
+      <TD COLSPAN="3"><INPUT TYPE="radio" NAME="内　容(必須)" VALUE="複写依頼">複写依頼
+<INPUT TYPE="radio" NAME="内　容(必須)" VALUE="借用依頼">借用依頼</TD>
+    </TR><TR>
+      <TD><B>複写依頼で<br>
+      　カラー図版が<br>
+      　　　あった場合<span>(*)</span></B></TD>
+      <TD COLSPAN="3">
+	<INPUT TYPE="radio" NAME="カラーページは" VALUE="モノクロ複写でよい" CHECKED>モノクロ複写希望
+	<INPUT TYPE="radio" NAME="カラーページは" VALUE="カラー複写希望">カラーページのみカラー複写希望<br>
+      　（参考）１枚当たり　モノクロ３５～５０円、カラー１００～１４０円程度</TD>
+    </TR><TR>
+      <TD><B>雑誌／図書名<span>(*)</span></B></TD>
+      <TD COLSPAN="3"><INPUT NAME="図書名(必須)" TYPE=text SIZE="80" required></TD>
+    </TR><TR>
+      <TD><B>巻</B></TD>
+      <TD><INPUT NAME="巻" TYPE=text SIZE="20"></TD>
+      <TD><B>号</B></TD>
+      <TD><INPUT NAME="号" TYPE=text SIZE="20"></TD>
+    </TR><TR>
+      <TD><B>開始ページ</B></TD>
+      <TD><INPUT NAME="開始ページ" TYPE=text SIZE="20"></TD>
+      <TD><B>終了ページ</B></TD>
+      <TD><INPUT NAME="終了ページ" TYPE=text SIZE="20"></TD>
+    </TR><TR>
+      <TD><B>出版年</B></TD>
+      <TD COLSPAN="3"><INPUT NAME="出版年" TYPE=text SIZE="40"></TD>
+    </TR><TR>
+      <TD><B>著　者</B></TD>
+      <TD COLSPAN="3"><INPUT NAME="著者" TYPE=text SIZE="80"></TD>
+    </TR><TR>
+      <TD><B>論　題</B></TD>
+      <TD COLSPAN="3"><TEXTAREA NAME="論題" ROWS="3" COLS="80"></TEXTAREA></TD>
+    </TR><TR>
+      <TD><B>その他</B></TD>
+      <TD COLSPAN="3"><TEXTAREA NAME="その他" ROWS="3" COLS="80"></TEXTAREA></TD>
+    </TR>
+  </TABLE><br>
+    <b><span>(*)</span>は必須項目です。</b>  <input type="submit" value="メールを送信する" /> <input type="reset" name="reset" value="リセット" />
+<!--INPUT TYPE="button" VALUE="送　　信" onclick="submit();"> <INPUT TYPE="button" VALUE="やり直し" onclick="location.reload()"-->
+
+  <P><br>
+  <b><font color=#ff0000>学生・院生で公費を利用される方へ！</font></b><br>
+  
+  <ul>
+    <li>使用する公費をお持ちの教員に必ず、公費を利用する許諾をもらってください。<br>
+    <li>申込画面のその他の欄か何処かに、支払いする教員の氏名をご記入ください。<br>
+    <br>
+  </ul>
+  <br>
+</DL>
+</FORM>
+<script type="text/javascript" src="mailform/mailform.js" charset="utf-8"></script>
+<SCRIPT language="JavaScript">
+<!--
+	today=new Date();
+	year=today.getFullYear();
+	month=today.getMonth()+1;
+	day=today.getDate();
+
+	document.form1.申込年月日.value = year+"/"+month+"/"+day;
+//-->
+</SCRIPT>
+
+<P><HR><P>
+
+<A HREF="http://www.lib.ous.ac.jp/">図書館ホームページへ戻る</A>
+
+</CENTER>
+
+<SCRIPT src="/footer.js"></SCRIPT>
+</div>
+</div>
+
+</BODY>
+</HTML>
+
+

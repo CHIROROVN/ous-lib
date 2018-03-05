@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML LANG="ja">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="snanail Version 2.18">
+<TITLE>イラスト展2007会場</TITLE>
+
+<SCRIPT TYPE="text/JavaScript">
+<!--
+var number = 15;
+var delay = 4000;
+var frame = -1;
+var timeout_id = null;
+var n=0;
+
+var tm_set = 1;
+var times = 1;
+var tm_now = 0;
+var first = 1;
+
+var filename = new Array("kp001poster.jpg",
+"kp002aisatsu.jpg","kp007.jpg","kp008.jpg",
+"kp009riyouannai.jpg","kp010.jpg","kp020.jpg",
+"kp030.jpg","kp035shiori.jpg","kp050.jpg",
+"kp055quize.jpg","kp057keihin.jpg","kp070.jpg",
+"kp075box.jpg","kp080poster_end.jpg")
+var images = new Array(number);
+var end = Math.floor(filename.length/3)
+for(var i=0; i<end; i++) {
+images[i] = new Image();
+images[i].src = filename[i];
+}
+
+function animate() {
+frame++;
+if (frame>=filename.length) {
+	frame=14;
+}
+if(frame==1 && tm_set==1 && first==0){
+	tm_now++;
+	if(tm_now> times) {
+		clearTimeout(timeout_id);
+		timeout_id=null;
+		first=0;
+		frame=14;
+		tm_now=0;
+		return;
+	}
+}
+first = 0;
+document.slideshow.src = images[frame].src;
+if((end+n) < filename.length){
+	images[end+n]=new Image();
+	images[end+n].src=filename[end+n];
+	++n;
+}
+changecom();
+timeout_id = setTimeout("animate()", delay);
+}
+
+function showFrame(mode) {
+if(mode==0) {
+	++frame;
+	if (frame>=filename.length) {
+		frame=0;
+	}
+}
+else {
+	--frame;
+	if(frame<0) {
+		frame=filename.length-1;
+	}
+}
+	if((end+n) < frame){
+		images[frame]=new Image();
+		images[frame].src=filename[frame];
+	}
+	else {
+	if((end+n) < filename.length){
+		images[end+n]=new Image();
+		images[end+n].src=filename[end+n];
+		++n;
+	}
+}
+document.slideshow.src = images[frame].src;
+first = 0;
+changecom();
+}
+
+function changecom(){
+	if(!document.getElementById) return;
+	var msg=document.getElementById("comment");
+	switch(frame){
+	case 0:
+		msg.firstChild.nodeValue="イラスト展のポスターです。学内の各所にも掲示しました。";
+		break;
+	case 1:
+		msg.firstChild.nodeValue="イラスト展開催の趣旨説明です。";
+		break;
+	case 2:
+		msg.firstChild.nodeValue="会場の全景です。38枚のイラスト達が主役です。";
+		break;
+	case 3:
+		msg.firstChild.nodeValue="イラスト展のアンケート &「図書館クイズ2007」の用紙・回収箱の他にイラスト入りのしおりも用意しました。";
+		break;
+	case 4:
+		msg.firstChild.nodeValue="イラストを掲載した図書館利用案内の表紙です。";
+		break;
+	case 5:
+		msg.firstChild.nodeValue="来場者の様子をご覧ください。利用案内もちゃんと見てくれています。";
+		break;
+	case 6:
+		msg.firstChild.nodeValue="他の来場者の様子です。";
+		break;
+	case 7:
+		msg.firstChild.nodeValue="しおりは結構好評でした。";
+		break;
+	case 8:
+		msg.firstChild.nodeValue="補充するのが大変なくらいでした。";
+		break;
+	case 9:
+		msg.firstChild.nodeValue="イラストに関係したクイズもありました。";
+		break;
+	case 10:
+		msg.firstChild.nodeValue="「図書館クイズ2007」昨年より難しいぞ!との評判が・・・アレレ?!";
+		break;
+	case 11:
+		msg.firstChild.nodeValue="全問正解者の中から抽選で・・・";
+		break;
+	case 12:
+		msg.firstChild.nodeValue="当選した方が!　実は!!　この中に!!!　いたかも ???";
+		break;
+	case 13:
+		msg.firstChild.nodeValue="会場とカウンタに回収箱を設置。運命の発表がラストイベントでした。";
+		break;
+	case 14:
+		msg.firstChild.nodeValue="漫研の皆さん! イラスト展を見てくれた皆さん! クイズに回答してくれた皆さん! 謝々!!";
+		break;
+	default:
+		msg.firstChild.nodeValue=" ";
+	}
+}
+//-->
+</SCRIPT>
+
+<STYLE type="text/css">
+<!--
+H1.TITLE {
+font-size : 10.5 pt;
+font-family : "MS UI Gothic";
+color : #009933;
+}
+-->
+</STYLE>
+
+
+</HEAD>
+
+<BODY BGCOLOR="#EFFDBD" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000" onLoad="showFrame(0);">
+<!-- 上の行を生かせば、このページを開いたときに、最初の画像で止まった状態で表示されます。 -->
+<!-- 次の行を生かせば、このページを開いたときに、スライドショウが自動で始まります。
+<BODY BGCOLOR="#EFFDBD" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000" onLoad="animate();">
+-->
+<CENTER>
+<H2 class="TITLE">イラスト展2007会場の様子</H2>
+<center>展示は全て終わりましたが、ここでは会場の様子を写真を使って、展示の模様をふり返ります。<br>（期間：2007年10月29日～11月9日撮影）</center>
+<hr style="height:5pt;color:brown">
+<FORM>
+<INPUT TYPE=button VALUE="自動" onClick="if (timeout_id == null) animate()">
+<INPUT TYPE=button VALUE="停止" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null;">
+<INPUT TYPE=button VALUE="前へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(1);">
+<INPUT TYPE=button VALUE="次へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(0);">
+</FORM>
+
+
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="700">
+<TR><TD ALIGN="CENTER"><FONT SIZE="3" COLOR="#000000">
+<DIV ID="comment">初期文字</DIV></FONT></TD>
+</TR>
+</TABLE>
+
+<IMG NAME="slideshow" ID="slideshow" SRC="kp001poster.jpg" BORDER="0" height="500">
+<P>
+</P>
+</CENTER>
+</BODY>
+</HTML>

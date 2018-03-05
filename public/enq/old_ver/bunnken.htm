@@ -1,0 +1,70 @@
+<HTML>
+
+<HEAD>
+ <TITLE>文献複写申込</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="./images/back.gif" LINK="#777777" VLINK="#333333">
+
+<CENTER>
+
+<P>
+
+<FORM METHOD="post" ACTION="/cgi-bin/mail2/tomail.pl">
+<INPUT TYPE="hidden" NAME="subject" value="文献複写申込">
+
+<H2></H2>
+
+<DL>
+<DT><H3><FONT COLOR="#993311">文献複写申込</FONT></H3>
+<DD>
+<TABLE BORDER>
+<TR><TD><B>申込年月日</B></TD><TD><INPUT NAME="申込年月日" SIZE="30"></TD>
+<TD><B>手配範囲</B></TD><TD><INPUT TYPE="radio" NAME="手配範囲" VALUE="国内" CHECKED>国内
+　<INPUT TYPE="radio" NAME="手配範囲" VALUE="海外">海外</TD></TR>
+<TR><TD><B>申込者氏名</B></TD><TD><INPUT NAME="氏名" TYPE=text SIZE="30"></TD><TD><B>所属学科</B></TD>
+<TD>
+<SELECT NAME="所属学科">
+<OPTION VALUE="応用数学科">応用数学科
+<OPTION VALUE="化学科">化学科
+<OPTION VALUE="応用物理学科">応用物理学科
+<OPTION VALUE="基礎理学科">基礎理学科
+<OPTION VALUE="生物化学科">生物化学科
+<OPTION VALUE="応用化学科">応用化学科
+<OPTION VALUE="機械工学科">機械工学科
+<OPTION VALUE="電子工学科">電子工学科
+<OPTION VALUE="情報工学科">情報工学科
+<OPTION VALUE="数理情報学科">数理情報学科
+<OPTION VALUE="シミュレーション物理学科">シミュレーション物理学科
+<OPTION VALUE="生物地球システム学科">生物地球システム学科
+<OPTION VALUE="社会情報学科">社会情報学科
+<OPTION VALUE="その他">その他
+</SELECT></TD></TR>
+<TR><TD><B>連絡先</B></TD><TD><INPUT NAME="連絡先" TYPE=text SIZE="30"></TD>
+    <TD><B>内　線</B></TD><TD><INPUT NAME="内　線" TYPE=text SIZE="20"></TD></TR>
+<TR><TD><B>Ｅ－ＭＡＩＬ</B></TD><TD COLSPAN="3"><INPUT NAME="email" TYPE=text SIZE="40"></TD></TR>
+<TR><TD><B>支　払</B></TD><TD COLSPAN="3"><INPUT TYPE="radio" NAME="支払" VALUE="私費" CHECKED>私費
+<INPUT TYPE="radio" NAME="支払" VALUE="公費（研究費）">公費（研究費）<INPUT TYPE="radio" NAME="支払" VALUE="公費（実験実習費）">公費（実験実習費）<BR>
+<INPUT TYPE="radio" NAME="支払" VALUE="その他">その他 <INPUT NAME="その他支払方法" TYPE=text SIZE="60">
+</TD>
+<TR><TD><B>内　容</B></TD><TD COLSPAN="3"><INPUT TYPE="radio" NAME="内　容" VALUE="複写依頼" CHECKED>複写依頼
+<INPUT TYPE="radio" NAME="内　容" VALUE="借用依頼">借用依頼</TD></TR>
+<TR><TD><B>雑誌／図書名</B></TD><TD COLSPAN="3"><INPUT NAME="図書名" TYPE=text SIZE="80"></TD></TR>
+<TR><TD><B>巻</B></TD><TD><INPUT NAME="巻" TYPE=text SIZE="20"></TD><TD><B>号</B></TD><TD><INPUT NAME="号" TYPE=text SIZE="20"></TD></TR>
+<TR><TD><B>開始ページ</B></TD><TD><INPUT NAME="開始ページ" TYPE=text SIZE="20"></TD><TD><B>終了ページ</B></TD><TD><INPUT NAME="終了ページ" TYPE=text SIZE="20"></TD></TR>
+<TR><TD><B>出版年</B></TD><TD COLSPAN="3"><INPUT NAME="出版年" TYPE=text SIZE="40"></TD></TR>
+<TR><TD><B>著　者</B></TD><TD COLSPAN="3"><INPUT NAME="著者" TYPE=text SIZE="80"></TD></TR>
+<TR><TD><B>論　題</B></TD><TD COLSPAN="3"><TEXTAREA NAME="論題" ROWS="3" COLS="80"></TEXTAREA></TD></TR>
+<TR><TD><B>その他</B></TD><TD COLSPAN="3"><TEXTAREA NAME="その他" ROWS="3" COLS="80"></TEXTAREA></TD></TR>
+</TABLE>
+<P>
+<INPUT TYPE="submit" VALUE="転　　送">　<INPUT TYPE="reset" VALUE="やり直し">
+</FORM>
+
+<P><HR><P>
+
+<A HREF="http://www.lib.ous.ac.jp/">図書館ホームページへ戻る</A>
+
+</CENTER>
+</BODY>
+</HTML>

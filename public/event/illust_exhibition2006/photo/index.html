@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML LANG="ja">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="snanail Version 2.18">
+<TITLE>会場の様子</TITLE>
+
+<SCRIPT TYPE="text/JavaScript">
+<!--
+var number = 20;
+var delay = 5000;
+var frame = -1;
+var timeout_id = null;
+var n=0;
+var ie  = navigator.userAgent.indexOf("MSIE ");
+var verIE = 0, winIE = -1;
+if(ie >= 0) {
+verIE = parseFloat(navigator.userAgent.substr(ie + 5));
+winIE = navigator.userAgent.indexOf("Windows");
+}
+var tm_set = 1;
+var times = 1;
+var tm_now = 0;
+var first = 1;
+var filename = new Array(
+"DSCF0039.jpg","DSCF0019.jpg","DSCF0018.jpg",
+"DSCF0023.jpg","DSCF0022.jpg","DSCF0026.jpg",
+"DSCF0021.jpg","DSCF0027.jpg","DSCF0024.jpg",
+"DSCF0025.jpg","DSCF0049.jpg","DSCF0040.jpg","DSCF0037.jpg",
+"DSCF0028.jpg","DSCF0054.jpg",
+"DSCF0056.jpg","DSCF0034.jpg","DSCF0048.jpg",
+"DSCF0047.jpg",
+"DSC00009.jpg"
+)
+var images = new Array(number);
+var end = Math.floor(filename.length/3)
+for(var i=0; i<end; i++) {
+images[i] = new Image();
+images[i].src = filename[i];
+}
+
+function animate() {
+var trans=0;
+frame++;
+if (frame>=filename.length) {
+	frame=0;
+}
+if(frame==1 && tm_set==1 && first==0){
+	tm_now++;
+	if(tm_now> times) {
+		clearTimeout(timeout_id);
+		timeout_id=null;
+		first=0;
+		frame=0;
+		tm_now=0;
+		return;
+	}
+}
+first = 0;
+if(verIE >= 5 && winIE >= 0) {
+	var img=document.getElementById("slideshow");
+	if(img.filters) {
+		img.filters["revealTrans"].Transition = 21;
+		trans=img.filters["revealTrans"];
+	}
+}
+if(trans) trans.apply();
+document.slideshow.src = images[frame].src;
+if((end+n) < filename.length){
+	images[end+n]=new Image();
+	images[end+n].src=filename[end+n];
+	++n;
+}
+if(trans) trans.play();
+changecom();
+timeout_id = setTimeout("animate()", delay);
+}
+
+function showFrame(mode) {
+if(mode==0) {
+	++frame;
+	if (frame>=filename.length) {
+		frame=0;
+	}
+}
+else {
+	--frame;
+	if(frame<0) {
+		frame=filename.length-1;
+	}
+}
+	if((end+n) < frame){
+		images[frame]=new Image();
+		images[frame].src=filename[frame];
+	}
+	else {
+	if((end+n) < filename.length){
+		images[end+n]=new Image();
+		images[end+n].src=filename[end+n];
+		++n;
+	}
+}
+document.slideshow.src = images[frame].src;
+first = 0;
+changecom();
+}
+
+function changecom(){
+	if(!document.getElementById) return;
+	var msg=document.getElementById("comment");
+	switch(frame){
+	case 0:
+		msg.firstChild.nodeValue="まずは１学舎を見てみましょう。　学園祭本部はこの横にあります。";
+		break;
+	case 1:
+		msg.firstChild.nodeValue="建物の入口ホール中央に図書館の掲示板があります。";
+		break;
+	case 2:
+		msg.firstChild.nodeValue="少し詳しく見ていきましょう。";
+		break;
+	case 3:
+		msg.firstChild.nodeValue="看板がお出迎えしてくれます。";
+		break;
+	case 4:
+		msg.firstChild.nodeValue="模造紙に一つずつイラストが貼ってありました。詳細は「展示したイラスト」をご覧ください。";
+		break;
+	case 5:
+		msg.firstChild.nodeValue="今回の趣旨です。内容はトップページにあります。";
+		break;
+	case 6:
+		msg.firstChild.nodeValue="机の上にも展示物をおきまして";
+		break;
+	case 7:
+		msg.firstChild.nodeValue="いろいろと飾らせていただきました。　中でも注目なのは";
+		break;
+	case 8:
+		msg.firstChild.nodeValue="しおりです。";
+		break;
+	case 9:
+		msg.firstChild.nodeValue="１つ１つ丁寧にリボンを付けました。";
+		break;
+	case 10:
+		msg.firstChild.nodeValue="絵柄は全部で８種類。ここにないものもあります。みんな見つけられましたか？？";
+		break;
+	case 11:
+		msg.firstChild.nodeValue="利用案内等と一緒に差し上げておりました。";
+		break;
+	case 12:
+		msg.firstChild.nodeValue="今度は１１号館に行ってみましょう。メインの図書館が入っている建物です。";
+		break;
+	case 13:
+		msg.firstChild.nodeValue="入口を入っていきますと";
+		break;
+	case 14:
+		msg.firstChild.nodeValue="２階へと上る階段があります。ここが図書館の入口です。";
+		break;
+	case 15:
+		msg.firstChild.nodeValue="看板の後ろには、人間国宝藤原雄先生の作品があります。";
+		break;
+	case 16:
+		msg.firstChild.nodeValue="実は、並びは１学舎と11号館と違うんですよ。気づきましたか？";
+		break;
+	case 17:
+		msg.firstChild.nodeValue="クイズもありました。";
+		break;
+	case 18:
+		msg.firstChild.nodeValue="このクイズは利用案内を見ないと解けませんでした。";
+		break;
+	case 19:
+		msg.firstChild.nodeValue="景品として手帳があたりました。100名を超える方の応募がありました。みなさま、ありがとうございました。";
+		break;
+	default:
+		msg.firstChild.nodeValue=" ";
+	}
+}
+//-->
+</SCRIPT>
+
+<STYLE type="text/css">
+<!--
+H1.TITLE {
+font-size : 20 pt;
+font-family : "MS UI Gothic";
+}
+
+IMG#slideshow {
+filter: revealTrans(Duration=2.0, Transition=21);
+}
+-->
+</STYLE>
+
+
+</HEAD>
+<BODY BGCOLOR="#EFFDBD" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000" onLoad="animate();">
+<CENTER>
+<H1 class="TITLE">会場の様子</H1>
+展示は全て終わりましたが、ここでは会場の様子を写真を使って、展示の模様をふり返ります。（2006年11月23日撮影）<br>
+<HR width="90%" SIZE="4" COLOR="#800040" noshade>
+<FORM>
+<INPUT TYPE=button VALUE="自動" onClick="if (timeout_id == null) animate()">
+<INPUT TYPE=button VALUE="停止" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null;">
+<INPUT TYPE=button VALUE="前へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(1);">
+<INPUT TYPE=button VALUE="次へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(0);">
+</FORM>
+
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="800"><TR><TD ALIGN="CENTER"><FONT SIZE="3" COLOR="#000000">
+<DIV ID="comment">初期文字</DIV></FONT></TD>
+</TR>
+</TABLE>
+
+<IMG NAME="slideshow" ID="slideshow" SRC="DSC00039.jpg" BORDER="0">
+<P>
+</P>
+</CENTER>
+</BODY>
+</HTML>

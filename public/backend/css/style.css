@@ -1,0 +1,30 @@
+/* CSS Document */
+
+@charset "utf-8";
+a {
+    color: #0000FF
+}
+a:link {
+    color: #0000FF
+}
+a:visited {
+    color: #0000FF
+}
+a:hover {
+    color: #0000FF
+}
+a:active {
+    color: #0000FF
+}
+
+td {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+.bg {
+	background-color: #CCC;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}

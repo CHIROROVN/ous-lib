@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML LANG="ja">
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 11.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>図書館クイズ2007</TITLE>
+
+<SCRIPT TYPE="text/JavaScript">
+<!--
+var number = 13;
+var delay = 4000;
+var frame = -1;
+var timeout_id = null;
+var n=0;
+var tm_set = 1;
+var times = 1;
+var tm_now = 0;
+var first = 1;
+var filename = new Array("qz005_kp055quize.jpg",
+"qz007_kp057keihin.jpg","qz010.jpg","qz015.jpg",
+"qz020.jpg","qz030.jpg","qz040.jpg",
+"qz050.jpg","qz060.jpg","qz070.jpg","qz072.jpg",
+"qz075_kp075box.jpg","qz080.jpg")
+var images = new Array(number);
+var end = Math.floor(filename.length/3)
+for(var i=0; i<end; i++) {
+images[i] = new Image();
+images[i].src = filename[i];
+}
+
+function animate() {
+frame++;
+if (frame>=filename.length) {
+	frame=12;
+}
+if(frame==1 && tm_set==1 && first==0){
+	tm_now++;
+	if(tm_now> times) {
+		clearTimeout(timeout_id);
+		timeout_id=null;
+		first=0;
+		frame=12;
+		tm_now=0;
+		return;
+	}
+}
+first = 0;
+document.slideshow.src = images[frame].src;
+if((end+n) < filename.length){
+	images[end+n]=new Image();
+	images[end+n].src=filename[end+n];
+	++n;
+}
+changecom();
+timeout_id = setTimeout("animate()", delay);
+}
+
+function showFrame(mode) {
+if(mode==0) {
+	++frame;
+	if (frame>=filename.length) {
+		frame=0;
+	}
+}
+else {
+	--frame;
+	if(frame<0) {
+		frame=filename.length-1;
+	}
+}
+	if((end+n) < frame){
+		images[frame]=new Image();
+		images[frame].src=filename[frame];
+	}
+	else {
+	if((end+n) < filename.length){
+		images[end+n]=new Image();
+		images[end+n].src=filename[end+n];
+		++n;
+	}
+}
+document.slideshow.src = images[frame].src;
+first = 0;
+changecom();
+}
+
+function changecom(){
+	if(!document.getElementById) return;
+	var msg=document.getElementById("comment");
+	switch(frame){
+	case 0:
+		msg.firstChild.nodeValue="「図書館クイズ2007」の用紙です。昨年より難しい!!との声が・・・アレレ?!";
+		break;
+	case 1:
+		msg.firstChild.nodeValue="全問正解者の中から抽選で賞品が当たります。";
+		break;
+	case 2:
+		msg.firstChild.nodeValue="イラスト展の会場に用紙と回収箱を置きました。";
+		break;
+	case 3:
+		msg.firstChild.nodeValue="イラスト展会場の全景です。Q1はこのイラストより出題。";
+		break;
+	case 4:
+		msg.firstChild.nodeValue="難しいとの声に答えて、ヒントとなるところに問題を拡大して掲示しました。";
+		break;
+	case 5:
+		msg.firstChild.nodeValue="Q2+Q3 は、貸出返却についての問題です。";
+		break;
+	case 6:
+		msg.firstChild.nodeValue="Q4 は、雑誌の並び順についてです。";
+		break;
+	case 7:
+		msg.firstChild.nodeValue="多くの人がこの Q4 で撃沈!!";
+		break;
+	case 8:
+		msg.firstChild.nodeValue="Q5 は、OPACで検索すれば簡単に判明。";
+		break;
+	case 9:
+		msg.firstChild.nodeValue="Q6 は、新聞に関する問題です。";
+		break;
+	case 10:
+		msg.firstChild.nodeValue="Q7 は、今年から始めたベストリーダー賞に関する問題です。";
+		break;
+	case 11:
+		msg.firstChild.nodeValue="たくさんの応募ありがとうございました。";
+		break;
+	case 12:
+		msg.firstChild.nodeValue="最後に正解をご覧下さい。";
+		break;
+	default:
+		msg.firstChild.nodeValue=" ";
+	}
+}
+//-->
+</SCRIPT>
+
+<STYLE type="text/css">
+<!--
+H1.TITLE {
+font-size : 10.5 pt;
+font-family : "MS UI Gothic";
+color : #009933;
+}
+-->
+</STYLE>
+
+
+</HEAD>
+
+<BODY BGCOLOR="#EFFDBD" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000" onLoad="showFrame(0);">
+<!-- 上の行を生かせば、このページを開いたときに、最初の画像で止まった状態で表示されます。 -->
+<!-- 次の行を生かせば、このページを開いたときに、スライドショウが自動で始まります。
+<BODY BGCOLOR="#EFFDBD" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000" onLoad="animate();">
+-->
+
+<CENTER>
+<H2>「図書館クイズ2007」同時開催</H2>
+<br>
+　「図書館クイズ2007」を「『図書館利用案内』掲載イラスト展2007」の期間中、同時開催しました。<br>
+　「図書館クイズ2007」とクイズに関連した様子をご紹介します。<br>
+
+<hr style="height:5pt;color:brown">
+<FORM>
+<INPUT TYPE=button VALUE="自動" onClick="if (timeout_id == null) animate()">
+<INPUT TYPE=button VALUE="停止" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null;">
+<INPUT TYPE=button VALUE="前へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(1);">
+<INPUT TYPE=button VALUE="次へ" onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null; showFrame(0);">
+</FORM>
+
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="700">
+<TR><TD ALIGN="CENTER">
+    <FONT SIZE="3" COLOR="#000000"><DIV id="comment">初期文字</DIV></FONT>
+    </TD>
+</TR>
+</TABLE>
+
+<IMG NAME="slideshow" ID="slideshow" SRC="qz005_kp055quize.jpg" BORDER="0" >
+
+</CENTER>
+</BODY>
+</HTML>

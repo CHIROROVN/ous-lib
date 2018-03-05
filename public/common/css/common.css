@@ -1,0 +1,497 @@
+@charset "utf-8";
+
+/*--------------------------------------------------------------------------------------------------
+
+   common
+
+--------------------------------------------------------------------------------------------------*/
+
+
+/*reset-------------------------------------------------*/
+*, *:before, *:after {
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -o-box-sizing: border-box;
+ -ms-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+body,div,h1,h2,h3,h4,h5,h6,p,dl,dt,dd {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+ border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img {
+	border: none;
+	vertical-align: top;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+header,section,article,aside,footer,nav {
+ display: block;
+}
+
+/*-------------------------------------------------reset*/
+
+
+/*common-------------------------------------------------*/
+body {
+	margin: 0;
+	padding: 0;
+	color: #333333;
+	font-size: 14px;
+	font-family: "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	line-height: 1.8;
+	border-top: 10px solid #ABCE03;
+}
+
+a:link {
+	color: #006699;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #993300;
+}
+
+a:hover, a:active {
+	color: #F26400;
+}
+
+.clear:after {
+ content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clear {
+ display: inline-table;
+ overflow: hidden;
+}
+
+/* mac \*/
+* html .clear {
+ height: 1%;
+}
+.clear {
+ display: block;
+}
+/* macend */
+
+.alignleft {
+	float: left;
+	margin: 0 20px 10px 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0 0 10px 20px;
+}
+
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+.c12 {
+	font-size: 12px;
+	color: #40813C;
+	line-height: 13px;
+}
+.c10 {
+	font-size: 10px;
+}
+.b12 {
+	font-size: 12px;
+	line-height: 14px;
+}
+.b10 {
+	font-size: 10px;
+	line-height: 10px;
+}
+.l12 {
+	color: #418BFF;
+	font-size: 12px;
+	line-height: 15px;
+}
+a {
+	text-decoration: none
+}
+a:hover {
+	text-decoration: underline
+}
+.r12 {
+	color: #F60;
+	font-size: 12px;
+	line-height: 13px;
+}
+
+.atc {
+	color: #F00;
+}
+
+.btn a:link, .btn a:visited {
+	display: block;
+	width: 400px;
+	padding: 10px;
+	margin: 0 auto;
+	text-align: center;
+	text-decoration: none !important;
+	border: 2px solid #ABCE03;
+	border-radius: 5px;
+	color: #333;
+}
+
+.btn a:hover, .btn a:active {
+	background-color: #ABCE03;
+	color: #FFFFFF;
+}
+
+/*-------------------------------------------------common*/
+
+
+/*------------------------------------------------------------------------------------------------
+  header
+--------------------------------------------------------------------------------------------------*/
+header {
+	position: relative;
+	width: 980px;
+	height: 86px;
+	margin: 0 auto;
+}
+
+header h1 {
+	position: absolute;
+	top: 20px;
+	left: 4px;
+}
+
+header h1 a {
+	display: block;
+	background: url(../image/title.png) no-repeat 0 0;
+	width: 326px;
+	height: 47px;
+ overflow: hidden;
+ text-indent: 100%;
+ white-space: nowrap;
+}
+
+header ul {
+	position: absolute;
+	top: 34px;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+header ul li {
+	float: left;
+	margin: 0 0 0 36px;
+	padding: 0;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+  gnavi
+--------------------------------------------------------------------------------------------------*/
+#gnavi {
+	background: url(../image/gnavi_back.png) repeat-x 0 0;
+	height: 56px;
+}
+
+#gnavi ul {
+	width: 982px;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+#gnavi ul li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 500;
+}
+
+#gnavi ul li a {
+	display: block;
+}
+
+#gnavi ul li ul {
+	display: none;
+	position: absolute;
+	top: 55px;
+	left: 1px;
+	width: 160px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#gnavi ul li ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+#gnavi ul li ul li a {
+	display: block;
+	width: 140px;
+	padding: 10px 5px 10px 15px;
+	background: url(../image/arrow-05.png) #8BA802 no-repeat 6px 15px;
+	color: #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	line-height: 1.2;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+#gnavi ul li ul li a:hover, #gnavi ul li ul li a:active {
+	text-decoration: underline;
+}
+
+#gnavi ul li:nth-child(5) ul li:nth-child(3) a {
+	background: url(../image/arrow-05.png) #8BA802 no-repeat 16px 15px;
+}
+
+#gnavi ul li:nth-child(6) ul li:nth-child(2) a {
+	background: url(../image/arrow-05.png) #8BA802 no-repeat 16px 15px;
+}
+#gnavi ul li:nth-child(6) ul li:nth-child(3) a {
+	background: url(../image/arrow-05.png) #8BA802 no-repeat 16px 15px;
+}
+#gnavi ul li:nth-child(6) ul li:nth-child(4) a {
+	background: url(../image/arrow-05.png) #8BA802 no-repeat 16px 15px;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+  footer
+--------------------------------------------------------------------------------------------------*/
+#footer {
+	background-color:;
+	background: url(../image/footer_back-02.jpg) #ABCE03 no-repeat 98% 0;
+}
+
+footer {
+	position: relative;
+	width: 980px;
+	height: 120px;
+	margin: 0 auto;
+	background: url(../image/footer_back.jpg) no-repeat 0 0;
+}
+
+footer p {
+	position: absolute;
+	top: 30px;
+	left: 10px;
+}
+
+footer address {
+	position: absolute;
+	top: 80px;
+	left: 10px;
+	font-style: normal;
+	color: #FFF;
+}
+
+#copy {
+	padding: 5px;
+	background-color: #8BA802;
+	text-align: center;
+	color: #FFF;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/*------------------------------------------------------------------------------------------------
+  second
+--------------------------------------------------------------------------------------------------*/
+#secTitleBox {
+	height: 154px;
+	border-bottom: 1px solid #F0F0E1;
+}
+
+.secTitle {
+	width: 980px;
+	margin: 0 auto;
+	color: #FFF;
+	padding: 40px 0 0;
+}
+
+.secTitle p {
+	font-size: 34px;
+	line-height: 1.4;
+	letter-spacing: 1px;
+}
+
+.secTitle p span {
+	display: block;
+	font-size: 16px;
+}
+
+#pan {
+	position: relative;
+	top: -20px;
+	left: 0;
+	width: 960px;
+	margin: 0 auto;
+	padding: 12px 10px;
+	background-color: #F9F9F9;
+}
+
+#pan ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#pan ul li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#pan ul li img {
+	vertical-align: -4px;
+}
+
+#pan ul li a {
+	text-decoration: none;
+	color: #333333;
+}
+
+#second {
+	width: 960px;
+	margin: 0 auto 50px;
+}
+
+#second h2 {
+	margin: 0 0 20px;
+	padding: 0 0 0 20px;
+	letter-spacing: 1px;
+	line-height: 43px;
+	background: url(../image/line-01.png) no-repeat 0 0;
+	border-bottom: 2px solid #CCC;
+	font-size: 20px;
+	font-weight: bold;
+	color: #525252;
+}
+
+#second h3 {
+ position: relative;
+	margin: 0 0 20px;
+ padding: 0.3em 0.6em;
+ background-color: #EEF5CD;
+	font-size: 18px;
+}
+
+#second h3::after {
+ position: absolute;
+ top: 0;
+ right: 0;
+ content: '';
+ width: 0;
+ border-width: 0 16px 16px 0;
+ border-style: solid;
+ border-color: #fff #fff #A8C662 #A8C662;
+ box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
+}
+
+#second p {
+	margin: 0 0 20px;
+}
+
+#second ol {
+	margin-bottom: 30px;
+}
+
+#second ul {
+	margin-bottom: 30px;
+}
+
+#second ul li {
+	margin-bottom: 10px;
+}
+
+#second .atten {
+	border: 1px dashed #F00;
+	margin: 0 30px 30px;
+	padding: 20px;
+}
+
+.pageMenu {
+	width: 942px;
+	margin: 0 auto 60px;
+	padding: 0;
+	list-style: none;
+}
+
+.pageMenu li {
+	float: left;
+	width: 306px;
+	margin: 0 10px 10px 0;
+	padding: 0;
+}
+
+.pageMenu li:nth-child(3n) {
+	margin: 0 0 10px;
+}
+
+.pageMenu li a {
+	display: block;
+	padding: 10px 10px 10px 26px;
+	border: 1px solid #DFDFDF;
+	box-shadow: 2px 2px 4px #DDD;
+	color: #333333;
+	text-decoration: none;
+	background: url(../image/arrow-03.png) #F9F9F9 no-repeat 10px center;
+}
+
+.pageMenu li a:hover, .pageMenu li a:active {
+	background: url(../image/arrow-03.png) #FFC no-repeat 10px center;
+}
+
+#tableofcontents {
+	width:960px;
+}
+
+#tableofcontents li {
+	margin:0 20px 20px 0;
+}
+
+#tableofcontents li:nth-child(3n) {
+	margin: 0 0 20px;
+}
+
+#tableofcontents li a {
+	text-align:center;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+#tableofcontents li a:hover {
+	box-shadow: 5px 5px 8px #DDD;
+}
+
+
+
+
+
+
+
