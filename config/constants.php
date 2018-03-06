@@ -5,6 +5,7 @@ $constants = array(
 	'UPDATE' => 1,
 	'DELETE' => 9,
 	'LIMIT_PAGE' => 20,
+	'FRONT_LIMIT_PAGE'=>3
 );
 
 

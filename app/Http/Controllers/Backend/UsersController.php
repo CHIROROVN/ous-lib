@@ -20,7 +20,7 @@ class UsersController extends BackendController
 	}
 
 	public function login(){
-		if(Auth::check()) return redirect()->route('backend.case.index');
+		if(Auth::check()) return redirect()->route('backend.menu.index');
 		return view('backend.users.login');
 	}
 
@@ -44,7 +44,7 @@ class UsersController extends BackendController
 		$login2['u_dspl_flag'] =  1;
 
 		if (Auth::attempt($login1, false) || Auth::attempt($login2, false)) {
-			return redirect()->route('backend.case.index');
+			return redirect()->route('backend.menu.index');
 		}  else {
 			Session::flash('danger', trans('common.msg_manage_login_danger'));
 			return redirect()->route('backend.users.login')->withErrors($validator)->withInput();

@@ -1,6 +1,55 @@
 /* CSS Document */
-
 @charset "utf-8";
+
+td {
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+}
+.col_1 {
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #889B2D;
+}
+.col_2 {
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	background-color: #E7EBD5;
+}
+
+.col_3 {
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	background-color: #eeeeee;
+}
+.f_red {
+	color: #F00;
+}
+.f_blue {
+	color: #00F;
+}
+.f_caution {
+	color: #C00;
+}
+.f_caution_b {
+	font-weight: bold;
+	color: #C00;
+}
+.f_gray {
+	color: #999;
+}
+.bg_caution {
+	background-color: #FFC;
+}
+.f_eng {
+	font-family: "Courier New", Courier, "monospace"
+}
 a {
     color: #0000FF
 }
@@ -17,14 +66,53 @@ a:active {
     color: #0000FF
 }
 
-td {
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	font-size: 12px;
-	line-height: 18px;
+input[type="button"] {
+margin: 0 5px;
 }
-.bg {
-	background-color: #CCC;
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	font-size: 12px;
-	line-height: 18px;
+
+input[type="submit"] {
+margin: 0 5px;
+}
+
+input[type="reset"] {
+margin: 0 5px;
+}
+
+textarea {
+width: 500px;
+}
+
+.caution {
+display:block;
+color: #FF0000;
+}
+#error.message {
+    background-color: #FFECEC;
+    border-left: 5px #E64943 solid;
+    color: #AB7955;
+    width: 97%;
+    border-radius: 1.8px;
+}
+.message {
+    background-size: 40px 40px;
+    background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, 
+ transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+ transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, 
+ transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+ transparent 75%, transparent);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, 
+ transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+ transparent 75%, transparent);
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+    font: 16px 'Open Sans';
+    width: 85%;
+    margin: 20px auto;
+    margin-top: 5p;
+    padding: 15px;
+    padding-right: 6px;
+    -moz-animation: bg-animate 5s linear infinite;
+    -webkit-animation: bg-animate 5s linear infinite;
+    -ms-animation: bg-animate 5s linear infinite;
+    animation: bg-animate 5s linear infinite;
 }

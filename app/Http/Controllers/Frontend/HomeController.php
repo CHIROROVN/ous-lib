@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Models\InfoModel;
 use Html;
 use Input;
 use Config;
@@ -12,8 +13,10 @@ class HomeController extends FrontendController {
 	 * @return Response
 	 */
 	public function index()
-	{	             
-	   return view('frontend.homepage.index');
+	{	     
+	   $clsInfo = new InfoModel();		
+	   $infos = $clsInfo->getInfo();        
+	   return view('frontend.homepage.index',$infos);
 	}
 	
 
