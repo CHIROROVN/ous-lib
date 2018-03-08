@@ -2,16 +2,17 @@
     <ul class="pagination">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <li class="disabled"><span>@lang('pagination.previous')</span></li>
+            <input type="button" disabled value="前の{{LIMIT_PAGE}}件を表示">
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
+            <input type="button" onClick="location.href='{{ $paginator->previousPageUrl() }}'"  rel="prev" value="前の{{LIMIT_PAGE}}件を表示">
         @endif
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li>
+            <input type="button" onClick="location.href='{{ $paginator->nextPageUrl() }}'" rel="next" value="次の{{LIMIT_PAGE}}件を表示">
         @else
-            <li class="disabled"><span>@lang('pagination.next')</span></li>
+            <input type="button" disabled value="次の{{LIMIT_PAGE}}件を表示">
         @endif
     </ul>
 @endif
+

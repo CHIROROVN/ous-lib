@@ -21,24 +21,7 @@
 			<td colspan="2" class="col_3">情報登録日 <span class="required">必須</span></td>
 			<td>{{japan_date($info->info_date)}}</td>
 		  </tr>
-		  <tr>
-			<td colspan="2" class="col_3">サムネイル画像</td>
-			<td>
-			@if(empty($info->info_list_img))
-			なし
-			@else
-			<a href="{{ asset('public') }}{{$info->info_list_img}}" target="_blank" title="">画像ビュー</a>
-			@endif
-			</td>
-		  </tr>
-		  <tr>
-			<td colspan="2" class="col_3">TOP用文章</td>
-			<td>{{$info->info_list_txt}}</td>
-		  </tr>
-		  <tr>
-			<td colspan="2" class="col_3">お知らせカテゴリ</td>
-			<td>{{ info_cat($info->info_cat) }}</td>
-		  </tr>
+		  
 		  <tr>
 			<td colspan="2" class="col_3">タイプ</td>
 			<td><table width="100%" border="0" cellspacing="0" cellpadding="3">

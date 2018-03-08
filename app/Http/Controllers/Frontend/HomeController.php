@@ -15,8 +15,38 @@ class HomeController extends FrontendController {
 	public function index()
 	{	     
 	   $clsInfo = new InfoModel();		
-	   $infos = $clsInfo->getInfo();        
-	   return view('frontend.homepage.index',$infos);
+	   $infos = $clsInfo->getInfoHomepage();	      
+	   return view('frontend.homepage.index',compact('infos'));
+	}
+
+	public function guide()
+	{         
+	   return view('frontend.homepage.guide');
+	}	
+	public function guideDetail($id)
+	{	     
+	         
+	   return view('frontend.homepage.guidedetail',compact('id'));
+	}
+	public function guidebooks()
+	{         
+	   return view('frontend.homepage.guidebooks');
+	}	
+	public function links()
+	{         
+	   return view('frontend.homepage.links');
+	}	
+	public function inquire()
+	{         
+	   return view('frontend.homepage.inquire');
+	}	
+	public function zousyo()
+	{         
+	   return view('frontend.homepage.zousyo');
+	}	
+	public function db()
+	{         
+	   return view('frontend.homepage.db');
 	}
 	
 

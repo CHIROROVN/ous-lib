@@ -20,11 +20,9 @@ class InfoModel
             'info_month'                       => 'required',
             'info_day'                         => 'required',
             'info_type'                        => 'required',
-            'info_list_img'                    => 'image|mimes:jpeg,jpg,png,gif|max:10000',
-            //'info_list_img'                    => 'max:10000|regex:/(\d)+.(?:jpeg|jpg|png|gif)/',
+            'info_list_img'                    => 'image|mimes:jpeg,jpg,png,gif|max:10000',            
             'info2_file'                       => 'mimes:doc,docx,pdf,txt,xls,xlsx|max:10000',
-            'info3_img'                        => 'image|mimes:jpeg,jpg,png,gif|max:10000|nullable',
-            //'info3_img'                        => 'max:10000|regex:/(\d)+.(?:jpeg|jpg|png|gif)/',
+            'info3_img'                        => 'image|mimes:jpeg,jpg,png,gif|max:10000|nullable',            
             'info3_file'                       => 'mimes:doc,docx,pdf,txt,xls,xlsx,ppt,pptx|max:10000|nullable',
             'info1_url'                        => 'required',
             'info2_file'                       => 'required',
@@ -75,6 +73,17 @@ class InfoModel
         return DB::table($this->table)->where('info_id', $id)->first();
     }
 
+    public function get_by_id_before($id)
+    {
+        return DB::table($this->table)->where('info_id','<',$id)->where('last_kind', '<>', DELETE)->where('info_type', '3')->orderBy('info_id', 'DESC')->first();
+    }
+
+    public function get_by_id_after($id)
+    {
+        return DB::table($this->table)->where('info_id','>',$id)->where('last_kind', '<>', DELETE)->where('info_type', '3')->orderBy('info_id', 'ASC')->first();
+    }
+
+
     //Info update
     public function update($id, $data)
     {
@@ -108,6 +117,46 @@ class InfoModel
         ->whereDate('info_start', '<=', $now)
 
         ->orWhereNull('info_dspl_flag')
+        ->where('last_kind', '<>', DELETE)
+        ->whereNull('info_start')
+        ->whereDate('info_end', '>=', $now)
+        
+        ->orderBy('info_date', 'DESC')
+        ->orderBy('info_top_flag', 'DESC')
+        ->orderBy('last_date', 'DESC')
+        ->paginate(LIMIT_PAGE);
+    }
+     public function getInfoHomepage(){
+        $datetime = Carbon::now();
+        $now = $datetime->toDateTimeString();
+        return DB::table($this->table)
+        ->where('info_dspl_flag')
+        ->where('info_top_flag', '=', '1')
+        ->where('last_kind', '<>', DELETE)
+        ->whereDate('info_start', '<=', $now)
+        ->whereDate('info_end', '>=', $now)
+
+        ->orWhereNull('info_dspl_flag')
+        ->where('info_top_flag', '=', '1')
+        ->where('last_kind', '<>', DELETE)
+        ->whereDate('info_end', '>=', $now)
+        ->whereNull('info_start')
+        ->where('last_kind', '<>', DELETE)
+
+        ->orWhereNull('info_dspl_flag')
+        ->where('info_top_flag', '=', '1')
+        ->where('last_kind', '<>', DELETE)
+        ->whereNull('info_end')
+        ->whereNull('info_start')
+
+        ->orWhereNull('info_dspl_flag')
+        ->where('info_top_flag', '=', '1')
+        ->where('last_kind', '<>', DELETE)
+        ->whereNull('info_end')
+        ->whereDate('info_start', '<=', $now)
+
+        ->orWhereNull('info_dspl_flag')
+        ->where('info_top_flag', '=', '1')
         ->where('last_kind', '<>', DELETE)
         ->whereNull('info_start')
         ->whereDate('info_end', '>=', $now)

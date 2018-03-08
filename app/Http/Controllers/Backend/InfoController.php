@@ -21,7 +21,12 @@ class InfoController extends BackendController
 	}
 
 	public function regist(){
-		return view('backend.infos.regist');
+		$data['error']['error_info_title_required']    	= trans('validation.error_info_title_required');
+		$data['error']['error_info_type_required']    	= trans('validation.error_info_type_required');
+		$data['error']['error_info_year_required']    	= trans('validation.error_info_year_required');
+		$data['error']['error_info1_url_required']    	= trans('validation.error_info1_url_required');
+		$data['error']['error_info2_file_required']    	= trans('validation.error_info2_file_required');
+		return view('backend.infos.regist',$data);
 	}
 
 	public function postRegist(Request $request){
@@ -62,11 +67,11 @@ class InfoController extends BackendController
 		}
 
 		if(!empty(Input::get('info2_file_old'))) unset($rules['info2_file']);
-		// if(!empty(Input::get('info3_img_old'))) unset($rules['info3_img']);
-		// if(!empty(Input::get('info3_file_old'))) unset($rules['info3_file']);
+		
 
 		$validator = Validator::make(Input::all(), $rules, $clsInfo->Messages());
 
+        ///echo "<pre>";print_r($validator);echo "</pre>";die; 
 		if ($validator->fails()) {
 			return redirect()->route('backend.infos.regist')->withErrors($validator)->withInput();
 		}
@@ -75,26 +80,13 @@ class InfoController extends BackendController
 		$data['info_year'] = Input::get('info_year');
 		$data['info_month'] = Input::get('info_month');
 		$data['info_day'] = Input::get('info_day');
+		$data['info_hour'] = Input::get('info_hour');
+		$data['info_minute'] = Input::get('info_minute');
 
 		if(!empty($data['info_year']) && !empty($data['info_month']) && !empty($data['info_day'])){
-			$data['info_date'] = date('Y-m-d H:i:s', strtotime($data['info_year'].'-'.$data['info_month'].'-'.$data['info_day']));
-		}
-
-		if (Input::hasFile('info_list_img')) {
-			$info_list_img = Input::file('info_list_img');
-			$random = rand(time(), '9999');
-			$fn_info_list_img = $random . '_' . $info_list_img->getClientOriginalName();
-			Image::make($info_list_img)->save(public_path('upload/infos/images/' . $fn_info_list_img ));
-			$data['info_list_img'] = '/upload/infos/images/' . $fn_info_list_img;
-		}else{
-			if(!empty(Input::get('info_list_img_old'))){
-				$data['info_list_img'] = Input::get('info_list_img_old');
-			}
-		}
-
-		$data['info_list_txt'] = Input::get('info_list_txt');
-		$data['info_cat'] = Input::get('info_cat');
-
+			$data['info_date'] = date('Y-m-d H:i:s', strtotime($data['info_year'].'-'.$data['info_month'].'-'.$data['info_day'].' '.$data['info_hour'].'-'.$data['info_minute']));
+		}		
+		
 		$data['info_type'] = Input::get('info_type');
 
 		if($data['info_type'] == 1){
@@ -117,157 +109,42 @@ class InfoController extends BackendController
 					$data['info2_file'] = Input::get('info2_file_old');
 				}
 			}
-		}else{
-			$data['info3_contents'] = Input::get('info3_contents');
-			if (Input::hasFile('info3_img1')) {
-				$info3_img1 = Input::file('info3_img1');
-				$random1 = rand(time(), '9999');
-				$fn_info3_img1 = $random1 . '_' . $info3_img1->getClientOriginalName();
-				Image::make($info3_img1)->save(public_path('upload/infos/images/' . $fn_info3_img1 ));
-				$data['info3_img1'] = '/upload/infos/images/' . $fn_info3_img1;
+		}else{			
+			if (Input::hasFile('info3_imgfile')) {
+				$info3_img = Input::file('info3_imgfile');
+				$random = rand(time(), '9999');
+				$fn_info3_img = $random . '_' . $info3_img->getClientOriginalName();
+				Image::make($info3_img)->save(public_path('upload/infos/images/' . $fn_info3_img ));
+				$data['info3_imgfile'] = '/upload/infos/images/' . $fn_info3_img;
 			}else{
-				if(!empty(Input::get('info3_img1_old'))){
-					$data['info3_img1'] = Input::get('info3_img1_old');
+				if(!empty(Input::get('info3_imgfile_old'))){
+					$data['info3_imgfile'] = Input::get('info3_imgfile_old');
 				}
-			}
+			}			
 
-			if (Input::hasFile('info3_img2')) {
-				$info3_img2 = Input::file('info3_img2');
-				$random2 = rand(time(), '9999');
-				$fn_info3_img2 = $random2 . '_' . $info3_img2->getClientOriginalName();
-				Image::make($info3_img2)->save(public_path('upload/infos/images/' . $fn_info3_img2 ));
-				$data['info3_img2'] = '/upload/infos/images/' . $fn_info3_img2;
+			if (Input::hasFile('info3_file')) {
+				$info3_file = Input::file('info3_file');
+				$info3_path_name= $info3_file->getPathName();
+				$_info3_ext = $info3_file->extension();
+				$name_info3 = $info3_file->getClientOriginalName();
+				$arr_info3 = explode('.', $name_info3);
+				$info3_txt_name = $arr_info3[0];
+				$fn_info3_file = $info3_txt_name . '_' . rand(time(), '9999') . '.' . $_info3_ext;
+				move_uploaded_file($info3_path_name, base_path() . '/public/upload/infos/files/' . $fn_info3_file);
+				$data['info3_file'] = '/upload/infos/files/' . $fn_info3_file;
 			}else{
-				if(!empty(Input::get('info3_img2_old'))){
-					$data['info3_img2'] = Input::get('info3_img2_old');
+				if(!empty(Input::get('info3_file_old'))){
+					$data['info3_file'] = Input::get('info3_file_old');
 				}
 			}
-
-			if (Input::hasFile('info3_img3')) {
-				$info3_img3 = Input::file('info3_img3');
-				$random3 = rand(time(), '9999');
-				$fn_info3_img3 = $random3 . '_' . $info3_img3->getClientOriginalName();
-				Image::make($info3_img3)->save(public_path('upload/infos/images/' . $fn_info3_img3 ));
-				$data['info3_img3'] = '/upload/infos/images/' . $fn_info3_img3;
-			}else{
-				if(!empty(Input::get('info3_img3_old'))){
-					$data['info3_img3'] = Input::get('info3_img3_old');
-				}
-			}
-
-			if (Input::hasFile('info3_img4')) {
-				$info3_img4 = Input::file('info3_img4');
-				$random4 = rand(time(), '9999');
-				$fn_info3_img4 = $random4 . '_' . $info3_img4->getClientOriginalName();
-				Image::make($info3_img4)->save(public_path('upload/infos/images/' . $fn_info3_img4 ));
-				$data['info3_img4'] = '/upload/infos/images/' . $fn_info3_img4;
-			}else{
-				if(!empty(Input::get('info3_img4_old'))){
-					$data['info3_img4'] = Input::get('info3_img4_old');
-				}
-			}
-
-			if (Input::hasFile('info3_img5')) {
-				$info3_img5 = Input::file('info3_img5');
-				$random5 = rand(time(), '9999');
-				$fn_info3_img5 = $random5 . '_' . $info3_img5->getClientOriginalName();
-				Image::make($info3_img5)->save(public_path('upload/infos/images/' . $fn_info3_img5 ));
-				$data['info3_img5'] = '/upload/infos/images/' . $fn_info3_img5;
-			}else{
-				if(!empty(Input::get('info3_img5_old'))){
-					$data['info3_img5'] = Input::get('info3_img5_old');
-				}
-			}
-
-			if (Input::hasFile('info3_file1')) {
-				$info3_file1 = Input::file('info3_file1');
-				$info3_path_name1= $info3_file1->getPathName();
-				$_info3_ext1 = $info3_file1->extension();
-				$name_info31 = $info3_file1->getClientOriginalName();
-				$arr_info3 = explode('.', $name_info31);
-				$info3_txt_name1 = $arr_info3[0];
-				$fn_info3_file1 = $info3_txt_name1 . '_' . rand(time(), '9999') . '.' . $_info3_ext1;
-				move_uploaded_file($info3_path_name1, base_path() . '/public/upload/infos/files/' . $fn_info3_file1);
-				$data['info3_file1'] = '/upload/infos/files/' . $fn_info3_file1;
-			}else{
-				if(!empty(Input::get('info3_file2_old'))){
-					$data['info3_file1'] = Input::get('info3_file1_old');
-				}
-			}
-			$data['info3_filename1'] = Input::get('info3_filename1');
-
-			if (Input::hasFile('info3_file2')) {
-				$info3_file2 = Input::file('info3_file2');
-				$info3_path_name2= $info3_file2->getPathName();
-				$_info3_ext2 = $info3_file2->extension();
-				$name_info32 = $info3_file2->getClientOriginalName();
-				$arr_info3 = explode('.', $name_info32);
-				$info3_txt_name2 = $arr_info3[0];
-				$fn_info3_file2 = $info3_txt_name2 . '_' . rand(time(), '9999') . '.' . $_info3_ext2;
-				move_uploaded_file($info3_path_name2, base_path() . '/public/upload/infos/files/' . $fn_info3_file2);
-				$data['info3_file2'] = '/upload/infos/files/' . $fn_info3_file2;
-			}else{
-				if(!empty(Input::get('info3_file2_old'))){
-					$data['info3_file2'] = Input::get('info3_file2_old');
-				}
-			}
-			$data['info3_filename2'] = Input::get('info3_filename2');
-
-			if (Input::hasFile('info3_file3')) {
-				$info3_file3 = Input::file('info3_file3');
-				$info3_path_name3= $info3_file3->getPathName();
-				$_info3_ext3 = $info3_file3->extension();
-				$name_info33 = $info3_file3->getClientOriginalName();
-				$arr_info3 = explode('.', $name_info33);
-				$info3_txt_name3 = $arr_info3[0];
-				$fn_info3_file3 = $info3_txt_name3 . '_' . rand(time(), '9999') . '.' . $_info3_ext3;
-				move_uploaded_file($info3_path_name3, base_path() . '/public/upload/infos/files/' . $fn_info3_file3);
-				$data['info3_file3'] = '/upload/infos/files/' . $fn_info3_file3;
-			}else{
-				if(!empty(Input::get('info3_file3_old'))){
-					$data['info3_file3'] = Input::get('info3_file3_old');
-				}
-			}
-			$data['info3_filename3'] = Input::get('info3_filename3');
-
-			if (Input::hasFile('info3_file4')) {
-				$info3_file4 = Input::file('info3_file4');
-				$info3_path_name4= $info3_file4->getPathName();
-				$_info3_ext4 = $info3_file4->extension();
-				$name_info34 = $info3_file4->getClientOriginalName();
-				$arr_info4 = explode('.', $name_info34);
-				$info3_txt_name4 = $arr_info4[0];
-				$fn_info3_file4 = $info3_txt_name4 . '_' . rand(time(), '9999') . '.' . $_info3_ext4;
-				move_uploaded_file($info3_path_name4, base_path() . '/public/upload/infos/files/' . $fn_info3_file4);
-				$data['info3_file4'] = '/upload/infos/files/' . $fn_info3_file4;
-			}else{
-				if(!empty(Input::get('info3_file4_old'))){
-					$data['info3_file4'] = Input::get('info3_file4_old');
-				}
-			}
-			$data['info3_filename4'] = Input::get('info3_filename4');
-
-			if (Input::hasFile('info3_file5')) {
-				$info3_file5 = Input::file('info3_file5');
-				$info3_path_name5 = $info3_file5->getPathName();
-				$_info3_ext5 = $info3_file5->extension();
-				$name_info35 = $info3_file5->getClientOriginalName();
-				$arr_info5 = explode('.', $name_info35);
-				$info3_txt_name5 = $arr_info5[0];
-				$fn_info3_file5 = $info3_txt_name5 . '_' . rand(time(), '9999') . '.' . $_info3_ext5;
-				move_uploaded_file($info3_path_name5, base_path() . '/public/upload/infos/files/' . $fn_info3_file5);
-				$data['info3_file5'] = '/upload/infos/files/' . $fn_info3_file5;
-			}else{
-				if(!empty(Input::get('info3_file5_old'))){
-					$data['info3_file5'] = Input::get('info3_file5_old');
-				}
-			}
-			$data['info3_filename5'] = Input::get('info3_filename5');
+			$data['info3_filename'] = Input::get('info3_filename');
+			
 		}
-
-
+        $data['info3_contents'] = Input::get('info3_contents');
+        $data['info3_url']      = Input::get('info3_url');
+        $data['info3_mail']     = Input::get('info3_mail');
 		$data['info_dspl_flag'] = Input::get('info_dspl_flag');
-		$data['info_top_flag'] = Input::get('info_top_flag');
+		$data['info_top_flag']  = Input::get('info_top_flag');
 
 		if(!empty(Input::get('year_start'))) $data['year_start'] = Input::get('year_start');
 		if(!empty(Input::get('month_start'))) $data['month_start'] = Input::get('month_start');
@@ -308,7 +185,7 @@ class InfoController extends BackendController
 		$data['last_date'] = date('Y-m-d H:i:s');
 		$data['last_kind'] = INSERT;
 		$data['last_user'] = Auth::user()->u_id;
-
+        
 		Session::put('info_regist', $data);
 		return redirect()->route('backend.infos.regist_cnf');
 	}
@@ -331,8 +208,10 @@ class InfoController extends BackendController
 			$data = Session::get('info_regist');
 
 			if(isset($data['info_year'])) unset($data['info_year']);
-			if(isset($data['info_month'])) unset($data['info_month']);
+			if(isset($data['info_month'])) unset($data['info_month']);			
 			if(isset($data['info_day'])) unset($data['info_day']);
+			if(isset($data['info_hour'])) unset($data['info_hour']);
+			if(isset($data['info_minute'])) unset($data['info_minute']);
 
 			if(isset($data['year_start'])) unset($data['year_start']);
 			if(isset($data['month_start'])) unset($data['month_start']);
@@ -347,9 +226,8 @@ class InfoController extends BackendController
 			if(isset($data['minute_end'])) unset($data['minute_end']);
 
 			if($clsInfo->insert($data)){
-				if(Session::has('info_regist')) Session::forget('info_regist');
-				Session::flash('success', trans('common.msg_cts-adm_regist_success'));
-				return redirect()->route('backend.infos.index');
+				if(Session::has('info_regist')) Session::forget('info_regist');			    
+				return view('backend.infos.regist_done');
 			}else{
 				Session::flash('danger', trans('common.msg_cts-adm_regist_danger'));
 				return redirect()->route('backend.infos.regist');
@@ -370,9 +248,14 @@ class InfoController extends BackendController
 
 	public function edit($id){
 		$clsInfo = new InfoModel();
-		$info = $clsInfo->get_by_id($id);
-		$info_id = $id;
-		return view('backend.infos.edit', compact('info_id', 'info'));
+		$data['info']= $clsInfo->get_by_id($id);		
+		$data['info_id'] = $id;
+		$data['error']['error_info_title_required']    	= trans('validation.error_info_title_required');
+		$data['error']['error_info_type_required']    	= trans('validation.error_info_type_required');
+		$data['error']['error_info_year_required']    	= trans('validation.error_info_year_required');
+		$data['error']['error_info1_url_required']    	= trans('validation.error_info1_url_required');
+		$data['error']['error_info2_file_required']    	= trans('validation.error_info2_file_required');
+		return view('backend.infos.edit',$data);
 	}
 
 	public function postEdit($id){
@@ -429,30 +312,14 @@ class InfoController extends BackendController
 		$data['info_year'] = Input::get('info_year');
 		$data['info_month'] = Input::get('info_month');
 		$data['info_day'] = Input::get('info_day');
+		$data['info_hour'] = Input::get('info_hour');
+		$data['info_minute'] = Input::get('info_minute');
 
 		if(!empty($data['info_year']) && !empty($data['info_month']) && !empty($data['info_day'])){
-			$data['info_date'] = date('Y-m-d H:i:s', strtotime($data['info_year'].'-'.$data['info_month'].'-'.$data['info_day']));
+			$data['info_date'] = date('Y-m-d H:i:s', strtotime($data['info_year'].'-'.$data['info_month'].'-'.$data['info_day'].' '.$data['info_hour'].':'.$data['info_minute']));
 		}
 
-		if(!empty(Input::get('chk_info_list_img'))){
-			$data['info_list_img'] = NULL;
-		}else{
-			if (Input::hasFile('info_list_img')) {
-				$info_list_img = Input::file('info_list_img');
-				$random = rand(time(), '9999');
-				$fn_info_list_img = $random . '_' . $info_list_img->getClientOriginalName();
-				Image::make($info_list_img)->save(public_path('upload/infos/images/' . $fn_info_list_img ));
-				$data['info_list_img'] = '/upload/infos/images/' . $fn_info_list_img;
-			}else{
-				if(!empty(Input::get('info_list_img_old'))){
-					$data['info_list_img'] = Input::get('info_list_img_old');
-				}
-			}
-		}
-
-		$data['info_list_txt'] = Input::get('info_list_txt');
-		$data['info_cat'] = Input::get('info_cat');
-
+		
 		$data['info_type'] = Input::get('info_type');
 
 		if($data['info_type'] == 1){
@@ -486,104 +353,25 @@ class InfoController extends BackendController
 					$random1 = rand(time(), '9999');
 					$fn_info3_img1 = $random1. '_' . $info3_img1->getClientOriginalName();
 					Image::make($info3_img1)->save(public_path('upload/infos/images/' . $fn_info3_img1 ));
-					$data['info3_img1'] = '/upload/infos/images/' . $fn_info3_img1;
+					$data['info3_imgfile'] = '/upload/infos/images/' . $fn_info3_img1;
 				}else{
 					if(!empty(Input::get('info3_img1_old')) && Input::get('info3_img1_radio') == 1)
-						$data['info3_img1'] = Input::get('info3_img1_old');
+						$data['info3_imgfile'] = Input::get('info3_img1_old');
 					elseif(empty(Input::get('info3_img1')) && Input::get('info3_img1_radio') == 2)
-						$data['info3_img1'] = NULL;
+						$data['info3_imgfile'] = NULL;
 				}
 			}elseif(!empty(Input::get('info3_img1_radio')) && Input::get('info3_img1_radio') == 3){
-				$data['info3_img1'] = NULL;
+				$data['info3_imgfile'] = NULL;
 			}else{
 				if(!empty(Input::get('info3_img1_old')))
-					$data['info3_img1'] = Input::get('info3_img1_old');
+					$data['info3_imgfile'] = Input::get('info3_img1_old');
 			}
-
-			if(!empty(Input::get('info3_img2_radio')) && Input::get('info3_img2_radio') == 2){	
-				if (Input::hasFile('info3_img2')) {
-					$info3_img2 = Input::file('info3_img2');
-					$random2 = rand(time(), '9999');
-					$fn_info3_img2 = $random2. '_' . $info3_img2->getClientOriginalName();
-					Image::make($info3_img2)->save(public_path('upload/infos/images/' . $fn_info3_img2 ));
-					$data['info3_img2'] = '/upload/infos/images/' . $fn_info3_img2;
-				}else{
-					if(!empty(Input::get('info3_img2_old')) && Input::get('info3_img2_radio') == 1)
-						$data['info3_img2'] = Input::get('info3_img2_old');
-					elseif(empty(Input::get('info3_img2')) && Input::get('info3_img2_radio') == 2)
-						$data['info3_img2'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_img2_radio')) && Input::get('info3_img2_radio') == 3){
-				$data['info3_img2'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_img2_old')))
-					$data['info3_img2'] = Input::get('info3_img2_old');
-			}
-
-			if(!empty(Input::get('info3_img3_radio')) && Input::get('info3_img3_radio') == 2){	
-				if (Input::hasFile('info3_img3')) {
-					$info3_img3 = Input::file('info3_img3');
-					$random3 = rand(time(), '9999');
-					$fn_info3_img3 = $random3. '_' . $info3_img3->getClientOriginalName();
-					Image::make($info3_img3)->save(public_path('upload/infos/images/' . $fn_info3_img3 ));
-					$data['info3_img3'] = '/upload/infos/images/' . $fn_info3_img3;
-				}else{
-					if(!empty(Input::get('info3_img3_old')) && Input::get('info3_img3_radio') == 1)
-						$data['info3_img3'] = Input::get('info3_img3_old');
-					elseif(empty(Input::get('info3_img3')) && Input::get('info3_img3_radio') == 2)
-						$data['info3_img3'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_img3_radio')) && Input::get('info3_img3_radio') == 3){
-				$data['info3_img3'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_img3_old')))
-					$data['info3_img3'] = Input::get('info3_img3_old');
-			}
-
-			if(!empty(Input::get('info3_img4_radio')) && Input::get('info3_img4_radio') == 2){	
-				if (Input::hasFile('info3_img4')) {
-					$info3_img4 = Input::file('info3_img4');
-					$random4 = rand(time(), '9999');
-					$fn_info3_img4 = $random4 . '_' . $info3_img4->getClientOriginalName();
-					Image::make($info3_img4)->save(public_path('upload/infos/images/' . $fn_info3_img4 ));
-					$data['info3_img4'] = '/upload/infos/images/' . $fn_info3_img4;
-				}else{
-					if(!empty(Input::get('info3_img4_old')) && Input::get('info3_img4_radio') == 1)
-						$data['info3_img4'] = Input::get('info3_img4_old');
-					elseif(empty(Input::get('info3_img4')) && Input::get('info3_img4_radio') == 2)
-						$data['info3_img4'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_img4_radio')) && Input::get('info3_img4_radio') == 3){
-				$data['info3_img4'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_img4_old')))
-					$data['info3_img4'] = Input::get('info3_img4_old');
-			}
-
-			if(!empty(Input::get('info3_img5_radio')) && Input::get('info3_img5_radio') == 2){	
-				if (Input::hasFile('info3_img5')) {
-					$info3_img5 = Input::file('info3_img5');
-					$random5 = rand(time(), '9999');
-					$fn_info3_img5 = $random5 . '_' . $info3_img5->getClientOriginalName();
-					Image::make($info3_img5)->save(public_path('upload/infos/images/' . $fn_info3_img5 ));
-					$data['info3_img5'] = '/upload/infos/images/' . $fn_info3_img5;
-				}else{
-					if(!empty(Input::get('info3_img5_old')) && Input::get('info3_img5_radio') == 1)
-						$data['info3_img5'] = Input::get('info3_img5_old');
-					elseif(empty(Input::get('info3_img5')) && Input::get('info3_img5_radio') == 2)
-						$data['info3_img5'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_img5_radio')) && Input::get('info3_img5_radio') == 3){
-				$data['info3_img5'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_img5_old')))
-					$data['info3_img5'] = Input::get('info3_img5_old');
-			}
+			
 
 			//File
 			if(!empty(Input::get('info3_file1_radio')) && Input::get('info3_file1_radio') == 2){
-				if (Input::hasFile('info3_file1')) {
-					$info3_file1 = Input::file('info3_file1');
+				if (Input::hasFile('info3_file')) {
+					$info3_file1 = Input::file('info3_file');
 					$info3_path_name1 = $info3_file1->getPathName();
 					$info3_ext1 = $info3_file1->getClientOriginalExtension();
 					$name_info31 = $info3_file1->getClientOriginalName();
@@ -594,120 +382,22 @@ class InfoController extends BackendController
 					$data['info3_file1'] = '/upload/infos/files/' . $fn_info3_file1;
 				}else{
 					if(!empty(Input::get('info3_file1_old')) && Input::get('info3_file1_radio') == 1)
-						$data['info3_file1'] = Input::get('info3_file1_old');
+						$data['info3_file'] = Input::get('info3_file1_old');
 					elseif(empty(Input::get('info3_file1')) && Input::get('info3_file1_radio') == 2)
-						$data['info3_file1'] = NULL;
+						$data['info3_file'] = NULL;
 				}
 			}elseif(!empty(Input::get('info3_file1_radio')) && Input::get('info3_file1_radio') == 3){
-				$data['info3_file1'] = NULL;
+				$data['info3_file'] = NULL;
 			}else{
 				if(!empty(Input::get('info3_file1_old')))
-					$data['info3_file1'] = Input::get('info3_file1_old');
+					$data['info3_file'] = Input::get('info3_file1_old');
 			}
-			$data['info3_filename1'] = Input::get('info3_filename1');
-
-			if(!empty(Input::get('info3_file2_radio')) && Input::get('info3_file2_radio') == 2){
-				if (Input::hasFile('info3_file2')) {
-					$info3_file2 = Input::file('info3_file2');
-					$info3_path_name2 = $info3_file2->getPathName();
-					$info3_ext2 = $info3_file2->getClientOriginalExtension();
-					$name_info32 = $info3_file2->getClientOriginalName();
-					$arr_info32 = explode('.', $name_info32);
-					$info3_txt_name2 = $arr_info32[0];
-					$fn_info3_file2 = $info3_txt_name2 . '_' . rand(time(), '9999') . '.' . $info3_ext2;
-					move_uploaded_file($info3_path_name2, base_path() . '/public/upload/infos/files/' . $fn_info3_file2);
-					$data['info3_file2'] = '/upload/infos/files/' . $fn_info3_file2;
-				}else{
-					if(!empty(Input::get('info3_file2_old')) && Input::get('info3_file2_radio') == 1)
-						$data['info3_file2'] = Input::get('info3_file2_old');
-					elseif(empty(Input::get('info3_file2')) && Input::get('info3_file2_radio') == 2)
-						$data['info3_file2'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_file2_radio')) && Input::get('info3_file2_radio') == 3){
-				$data['info3_file2'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_file2_old')))
-					$data['info3_file2'] = Input::get('info3_file2_old');
-			}
-			$data['info3_filename2'] = Input::get('info3_filename2');
-
-			if(!empty(Input::get('info3_file3_radio')) && Input::get('info3_file3_radio') == 2){
-				if (Input::hasFile('info3_file3')) {
-					$info3_file3 = Input::file('info3_file3');
-					$info3_path_name3 = $info3_file3->getPathName();
-					$info3_ext3 = $info3_file3->getClientOriginalExtension();
-					$name_info33 = $info3_file3->getClientOriginalName();
-					$arr_info33 = explode('.', $name_info33);
-					$info3_txt_name3 = $arr_info33[0];
-					$fn_info3_file3 = $info3_txt_name3 . '_' . rand(time(), '9999') . '.' . $info3_ext3;
-					move_uploaded_file($info3_path_name3, base_path() . '/public/upload/infos/files/' . $fn_info3_file3);
-					$data['info3_file3'] = '/upload/infos/files/' . $fn_info3_file3;
-				}else{
-					if(!empty(Input::get('info3_file3_old')) && Input::get('info3_file3_radio') == 1)
-						$data['info3_file3'] = Input::get('info3_file3_old');
-					elseif(empty(Input::get('info3_file3')) && Input::get('info3_file3_radio') == 2)
-						$data['info3_file3'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_file3_radio')) && Input::get('info3_file3_radio') == 3){
-				$data['info3_file3'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_file3_old')))
-					$data['info3_file3'] = Input::get('info3_file3_old');
-			}
-			$data['info3_filename3'] = Input::get('info3_filename3');
-
-			if(!empty(Input::get('info3_file4_radio')) && Input::get('info3_file4_radio') == 2){
-				if (Input::hasFile('info3_file4')) {
-					$info3_file4 = Input::file('info3_file4');
-					$info3_path_name4 = $info3_file4->getPathName();
-					$info3_ext4 = $info3_file4->getClientOriginalExtension();
-					$name_info34 = $info3_file4->getClientOriginalName();
-					$arr_info34 = explode('.', $name_info34);
-					$info3_txt_name4 = $arr_info34[0];
-					$fn_info3_file4 = $info3_txt_name4 . '_' . rand(time(), '9999') . '.' . $info3_ext4;
-					move_uploaded_file($info3_path_name4, base_path() . '/public/upload/infos/files/' . $fn_info3_file4);
-					$data['info3_file4'] = '/upload/infos/files/' . $fn_info3_file4;
-				}else{
-					if(!empty(Input::get('info3_file4_old')) && Input::get('info3_file4_radio') == 1)
-						$data['info3_file4'] = Input::get('info3_file4_old');
-					elseif(empty(Input::get('info3_file4')) && Input::get('info3_file4_radio') == 2)
-						$data['info3_file4'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_file4_radio')) && Input::get('info3_file4_radio') == 3){
-				$data['info3_file4'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_file4_old')))
-					$data['info3_file4'] = Input::get('info3_file4_old');
-			}
-			$data['info3_filename4'] = Input::get('info3_filename4');
-
-			if(!empty(Input::get('info3_file5_radio')) && Input::get('info3_file5_radio') == 2){
-				if (Input::hasFile('info3_file5')) {
-					$info3_file5 = Input::file('info3_file5');
-					$info3_path_name5 = $info3_file5->getPathName();
-					$info3_ext5 = $info3_file5->getClientOriginalExtension();
-					$name_info35 = $info3_file5->getClientOriginalName();
-					$arr_info35 = explode('.', $name_info35);
-					$info3_txt_name5 = $arr_info35[0];
-					$fn_info3_file5 = $info3_txt_name5 . '_' . rand(time(), '9999') . '.' . $info3_ext5;
-					move_uploaded_file($info3_path_name5, base_path() . '/public/upload/infos/files/' . $fn_info3_file5);
-					$data['info3_file5'] = '/upload/infos/files/' . $fn_info3_file5;
-				}else{
-					if(!empty(Input::get('info3_file5_old')) && Input::get('info3_file5_radio') == 1)
-						$data['info3_file5'] = Input::get('info3_file5_old');
-					elseif(empty(Input::get('info3_file5')) && Input::get('info3_file5_radio') == 2)
-						$data['info3_file5'] = NULL;
-				}
-			}elseif(!empty(Input::get('info3_file5_radio')) && Input::get('info3_file5_radio') == 3){
-				$data['info3_file5'] = NULL;
-			}else{
-				if(!empty(Input::get('info3_file5_old')))
-					$data['info3_file5'] = Input::get('info3_file5_old');
-			}
-			$data['info3_filename5'] = Input::get('info3_filename5');
+			$data['info3_filename'] = Input::get('info3_filename');	
+			$data['info3_url'] = Input::get('info3_url');
+			$data['info3_mail'] = Input::get('info3_mail');		
 
 		}
-
+         
 		$data['info_dspl_flag'] = Input::get('info_dspl_flag');
 		$data['info_top_flag'] = Input::get('info_top_flag');
 
@@ -754,7 +444,7 @@ class InfoController extends BackendController
 		$data['last_date'] = date('Y-m-d H:i:s');
 		$data['last_kind'] = UPDATE;
 		$data['last_user'] = Auth::user()->u_id;
-
+        
 		Session::put('info_edit', $data);
 		return redirect()->route('backend.infos.edit_cnf',$id);
 	}
@@ -779,6 +469,8 @@ class InfoController extends BackendController
 			if(isset($data['info_year'])) unset($data['info_year']);
 			if(isset($data['info_month'])) unset($data['info_month']);
 			if(isset($data['info_day'])) unset($data['info_day']);
+			if(isset($data['info_hour'])) unset($data['info_hour']);
+			if(isset($data['info_minute'])) unset($data['info_minute']);
 
 			if(isset($data['year_start'])) unset($data['year_start']);
 			if(isset($data['month_start'])) unset($data['month_start']);
@@ -793,9 +485,8 @@ class InfoController extends BackendController
 			if(isset($data['minute_end'])) unset($data['minute_end']);
 
 			if($clsInfo->update($id, $data)){
-				if(Session::has('info_edit')) Session::forget('info_edit');
-			Session::flash('success', trans('common.msg_cts-adm_regist_success'));
-			return redirect()->route('backend.infos.index');
+				if(Session::has('info_edit')) Session::forget('info_edit');				
+			    return view('backend.infos.regist_done');
 			}else{
 				Session::flash('danger', trans('common.msg_cts-adm_regist_danger'));
 				return redirect()->route('backend.infos.edit, $id');
@@ -832,9 +523,8 @@ class InfoController extends BackendController
 		$data['last_kind'] = DELETE;
 		$data['last_user'] = Auth::user()->u_id;
 
-		if($clsInfo->update($id, $data)){
-			Session::flash('success', trans('common.msg_cts-adm_del_success'));
-			return redirect()->route('backend.infos.index');
+		if($clsInfo->update($id, $data)){			
+			return view('backend.infos.regist_done');
 		}else{
 			Session::flash('danger', trans('common.msg_cts-adm_del_danger'));
 			return redirect()->route('backend.infos.index');

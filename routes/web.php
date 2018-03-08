@@ -19,7 +19,21 @@ Auth::routes();
 
 Route::group(['prefix' => '', 'namespace' => 'Frontend'], function () 
 {
-	Route::get('/', ['as' => 'frontend.homepage.index', 'uses' => 'HomeController@index']);
+	Route::get('/', ['as' => 'frontend.homepage.index', 'uses' => 'HomeController@index']);	
+	//============
+	Route::get('/guidebooks', ['as' => 'frontend.homepage.guidebooks', 'uses' => 'HomeController@guidebooks']);
+	Route::get('/links', ['as' => 'frontend.homepage.links', 'uses' => 'HomeController@links']);
+	Route::get('/inquire', ['as' => 'frontend.homepage.inquire', 'uses' => 'HomeController@inquire']);
+	Route::get('/zousyo', ['as' => 'frontend.homepage.zousyo', 'uses' => 'HomeController@zousyo']);	
+	Route::get('/db', ['as' => 'frontend.homepage.db', 'uses' => 'HomeController@db']);	
+	Route::get('/denshi', ['as' => 'frontend.homepage.denshi', 'uses' => 'HomeController@denshi']);	
+	Route::get('/shiryou', ['as' => 'frontend.homepage.shiryou', 'uses' => 'HomeController@shiryou']);	
+	Route::get('/about', ['as' => 'frontend.homepage.about', 'uses' => 'HomeController@about']);
+	/////	
+	Route::get('/guide', ['as' => 'frontend.homepage.guide', 'uses' => 'HomeController@guide']);
+	Route::get('/guide/{id}', ['as' => 'frontend.homepage.detail', 'uses' => 'HomeController@guideDetail']);
+	Route::get('/news', ['as' => 'frontend.news.index', 'uses' => 'NewsController@index']);
+	Route::get('/news/detail/{id}', ['as' => 'frontend.news.detail', 'uses' => 'NewsController@detail']);
 	
 });
 
@@ -28,7 +42,6 @@ Route::group(['prefix' => 'manage', 'namespace' => 'Backend'], function () {
 	Route::get('/users/login', ['as' => 'backend.users.login', 'uses' => 'UsersController@login']);
 	Route::post('/users/login', ['as' => 'backend.users.login', 'uses' => 'UsersController@postLogin']);
 	Route::get('/users/logout', ['as' => 'backend.users.logout', 'uses' => 'UsersController@logout']);
-
 	// menu
 	Route::get('/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);	
 	//Info

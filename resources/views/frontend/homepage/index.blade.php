@@ -45,12 +45,23 @@
       </div>
     </section>
     <seciton>
-    <h2>お知らせ<a href="info.html"><img src="{{ asset('') }}public/common/image/all.png" width="100" height="30" alt="一覧を見る"></a></h2>
+    <h2>お知らせ<a href="{{route('frontend.news.index')}}"><img src="{{ asset('') }}public/common/image/all.png" width="100" height="30" alt="一覧を見る"></a></h2>
     <ul class="infoList">
-      <li><a href="info_detail.html"><span>2016/12/20</span>12/23～1/4：冬期休業により閉館します。</a></li>
-      <li><a href="info_detail.html"><span>2016/10/01</span>10号館図書館の閉鎖について</a></li>
-      <li><a href="info_detail.html"><span>2016/10/01</span>お知らせのタイトルがはいります</a></li>
+      @if(!empty($infos))
+      <?php $jumb = 0; ?>
+      @foreach($infos as $key => $info)
+      <li>@if($info->info_type == 1)
+          <a href="{{ $info->info1_url}}"  target="_blank" >
+          @elseif($info->info_type == 2)
+          <a href="{{ asset('public') }}{{ $info->info2_file}}"  target="_blank" >
+          @else
+          <a href="{{route('frontend.news.detail', $info->info_id)}}">
+          @endif<span>{{format_date($info->info_date,'/')}}</span>{{$info->info_title}}</a></li>
+      @endforeach 
+      
+      @endif
     </ul>
+    
     </section>
     <ul class="indexNavi clear">
       <li><a href="http://www.lib.ous.ac.jp/ebook_index.html"><img src="{{ asset('') }}public/common/image/ebook.png" alt="e-BOOK" width="350" height="150"></a></li>

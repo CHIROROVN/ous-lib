@@ -116,3 +116,4 @@ color: #FF0000;
     -ms-animation: bg-animate 5s linear infinite;
     animation: bg-animate 5s linear infinite;
 }
+.info3_contents{ width: 500px !important;  }
